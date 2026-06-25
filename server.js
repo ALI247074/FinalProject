@@ -39,7 +39,14 @@ If the requested language is Arabic ('ar'), you MUST write the entire response i
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+// 1. إخبار السيرفر رسمياً بأن جميع ملفات الواجهات موجودة داخل مجلد public
 app.use(express.static(path.join(__dirname, 'public')));
+
+// 2. توجيه الرابط الرئيسي ليفتح صفحة الهوم أو الإقلاع الصحيحة من داخل مجلد public تلقائياً
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'home.html')); 
+    // ملاحظة: إذا كنت تريد أن يفتح الموقع على واجهة الذكاء الاصطناعي مباشرة، استبدل 'home.html' بـ 'ai-engine.html'
+});
 
 // ==========================================================================
 // 🗄️ DATABASE NODE INITIALIZATION (SQLITE3)
