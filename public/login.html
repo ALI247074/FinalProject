@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="rootHtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareShield Hub - Secure Access</title>
+    <link rel="stylesheet" href="css/login-style.css">
+</head>
+<body>
+
+    <div class="lang-switcher-wrapper">
+        <button id="langToggle" class="lang-btn">
+            <svg class="icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"></circle>
+                <line x1="2" y1="12" x2="22" y2="12"></line>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+            </svg>
+            <span id="langText">العربية</span>
+        </button>
+    </div>
+
+    <div class="split-container">
+        
+        <div class="form-section">
+            <div class="form-container">
+                
+                <div class="brand-logo">
+                    <svg class="logo-svg" viewBox="0 0 24 24" fill="currentColor">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                </div>
+
+                <div class="welcome-header">
+                    <h1 id="txtTitle" data-en="Welcome back!" data-ar="أهلاً بك مجدداً!">Welcome back!</h1>
+                    <p id="txtSubtitle" data-en="Your work, your team, your flow — all in one place." data-ar="منظومتك، فريقك، ومسارك العملي — كله في مكان واحد آمن.">Your work, your team, your flow — all in one place.</p>
+                </div>
+
+                <form id="loginGateForm">
+                    <div class="input-block">
+                        <label for="email" id="lblEmail" data-en="Email Address" data-ar="البريد الإلكتروني المهني">Email Address</label>
+                        <input type="email" id="email" placeholder="name@careshield.local" autocomplete="off" required>
+                    </div>
+
+                    <div class="input-block">
+                        <label for="password" id="lblPassword" data-en="Security Password" data-ar="كلمة المرور الأمنية">Security Password</label>
+                        <input type="password" id="password" placeholder="••••••••••••" autocomplete="off" required>
+                    </div>
+
+                    <div class="form-meta">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="remember">
+                            <span id="txtRemember" data-en="Remember this device" data-ar="تذكر هذا الجهاز">Remember this device</span>
+                        </label>
+                        <a href="#" class="forgot-link" id="txtForgot" data-en="Forgot password?" data-ar="نسيت كلمة المرور؟">Forgot password?</a>
+                    </div>
+
+                    <button type="submit" class="prime-btn" id="btnSubmit" data-en="Sign in with email" data-ar="تسجيل الدخول بالنظام الآمن">Sign in with email</button>
+                </form>
+
+                <div class="form-footer">
+                    <p id="txtFooterHelp" data-en="Need technical support? Contact Root Administrator" data-ar="بحاجة لدعم فني؟ اتصل بمسؤول النظام الرئيسي">Need technical support? Contact Root Administrator</p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="visual-section">
+            <img src="https://i.pinimg.com/736x/31/72/94/3172943688b1ff9ef1ddf766525b10db.jpg" alt="Security Infrastructure" class="visual-bg-image">
+            <div class="visual-overlay"></div>
+            <div class="monochrome-grid"></div>
+            
+            <div class="visual-inner">
+                <div class="node-badge" id="txtNodeBadge" data-en="SECURITY MATRIX V2" data-ar="مصفوفة الحماية V2">SECURITY MATRIX V2</div>
+                <h2 id="txtVisualTitle" data-en="CareShield Core Node" data-ar="عقدة كير شيلد الرئيسية">CareShield Core Node</h2>
+                <p id="txtVisualDesc" data-en="Advanced cryptographic infrastructure protecting terminal logs, user authorization matrix, and persistent validation layers." data-ar="بنية تحتية تشفيرية متقدمة تحمي سجلات النظام، مصفوفة صلاحيات المستخدمين، وطبقات التحقق المستمرة.">Advanced cryptographic infrastructure protecting terminal logs, user authorization matrix, and persistent validation layers.</p>
+                
+                <div class="floating-silver-card">
+                    <div class="card-status">
+                        <span class="static-dot"></span>
+                        <span id="txtCardStatus" data-en="SYSTEM INITIALIZATION // SECURE" data-ar="تهيئة النظام // آمن تماماً">SYSTEM INITIALIZATION // SECURE</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/login-script.js"></script>
+</body>
+</html>

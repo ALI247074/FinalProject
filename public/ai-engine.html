@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareShield | Medical Analytics Core</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard-style.css"> 
+    <style>
+        body {
+            background: url('abstract-fluid-metallic-art-with-glossy-finish-wallpaper-1440x1080_22.jpg') no-repeat center center fixed; 
+            background-size: cover;
+            color: #fff; 
+            font-family: 'Inter', 'Cairo', sans-serif; 
+            overflow: hidden;
+            position: relative;
+            min-height: 100vh;
+            margin: 0;
+        }
+        
+        .bg-orb {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .glass-container {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            z-index: 5;
+            position: relative;
+        }
+
+        .monochrome-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .monochrome-input {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+        .monochrome-input:focus {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.06);
+        }
+
+        .monochrome-btn {
+            background: #ffffff;
+            color: #000000;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .monochrome-btn:hover {
+            background: #e4e4e7;
+            transform: translateY(-1px);
+        }
+
+        /* 👑 كود الـ Scrollbar الزجاجي المخصص لمنع تجمد المحادثة */
+        #aiChatConsoleDisplay {
+            height: 380px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            padding-right: 10px;
+            scroll-behavior: smooth;
+        }
+
+        #aiChatConsoleDisplay::-webkit-scrollbar {
+            width: 6px;
+        }
+        #aiChatConsoleDisplay::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 10px;
+        }
+        #aiChatConsoleDisplay::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+        }
+        #aiChatConsoleDisplay::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .drag-over {
+            border-color: rgba(255, 255, 255, 0.4) !important;
+            background: rgba(255, 255, 255, 0.05) !important;
+        }
+
+        /* ==========================================================================
+           ♿ خواص وضع التباين العالي المتقدم لضعاف النظر (Accessibility Node)
+           ========================================================================== */
+        body.high-contrast {
+            background: #000000 !important;
+        }
+        body.high-contrast .bg-orb {
+            display: none !important;
+        }
+        body.high-contrast .glass-container,
+        body.high-contrast .monochrome-card,
+        body.high-contrast #fileDropZone {
+            background: #000000 !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
+            border: 2px solid #ffff00 !important; /* حدود صفراء حادة وعالية التباين */
+        }
+        body.high-contrast * {
+            color: #ffff00 !important; /* تحويل كافة الخطوط للأصفر الساطع الصافي */
+            text-shadow: none !important;
+        }
+        body.high-contrast .monochrome-input {
+            background: #000000 !important;
+            border: 2px solid #ffff00 !important;
+            color: #ffff00 !important;
+        }
+        body.high-contrast .monochrome-btn {
+            background: #ffff00 !important;
+            color: #000000 !important;
+            border: 2px solid #ffff00 !important;
+            font-weight: 800 !important;
+        }
+        body.high-contrast .monochrome-btn i {
+            color: #000000 !important;
+        }
+        body.high-contrast #aiChatConsoleDisplay::-webkit-scrollbar-thumb {
+            background: #ffff00 !important;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-orb" style="width: 600px; height: 600px; top: -200px; left: -100px;"></div>
+    <div class="bg-orb" style="width: 500px; height: 500px; bottom: -150px; right: -50px;"></div>
+
+    <div style="display: flex; flex-direction: column; height: 100vh; padding: 25px; box-sizing: border-box;">
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; z-index: 10;">
+            <a href="dashboard.html" id="uiReturnLink" style="color: #a1a1aa; text-decoration: none; font-size: 13px; font-weight: 500; transition: color 0.3s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#a1a1aa'">
+                <i class="fa-solid fa-arrow-left"></i> Return to Control Center
+            </a>
+            
+            <!-- أزرار التحكم اللغوية والبصرية مجمعة في حاوية مرنة -->
+            <div style="display: flex; gap: 10px;">
+                <button id="uiHighContrastBtn" class="monochrome-card" style="padding: 8px 16px; color: #fff; font-size: 12px; cursor: pointer; font-weight: 500;">
+                    <i class="fa-solid fa-eye-low-vision" style="margin-right: 4px;"></i> <span id="uiHighContrastText">High Contrast</span>
+                </button>
+                <button id="uiLangToggleBtn" class="monochrome-card" style="padding: 8px 16px; color: #fff; font-size: 12px; cursor: pointer; font-weight: 500;">
+                    <i class="fa-solid fa-globe" style="margin-right: 4px;"></i> <span id="uiLangToggleText">العربية</span>
+                </button>
+            </div>
+        </div>
+
+        <div class="glass-container" style="flex: 1; display: flex; gap: 20px; padding: 25px; box-sizing: border-box; overflow: hidden;">
+            
+            <div style="flex: 1.2; display: flex; flex-direction: column; height: 100%;">
+                <div style="margin-bottom: 15px;">
+                    <span id="uiBadgeStatus" style="font-size: 10px; text-transform: uppercase; letter-spacing: 2px; color: #a1a1aa; font-weight: 700; background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 4px;">SYSTEM STATUS: OPERATIONAL TIER-1</span>
+                    <h2 id="uiChatTitle" style="color: #ffffff; font-size: 20px; font-weight: 700; margin-top: 10px;"><i class="fa-solid fa-comments"></i> Universal AI Consultation Console</h2>
+                    <p id="uiChatDesc" style="font-size: 12px; color: #a1a1aa; margin-top: 4px;">Submit any query—medical, security, software engineering, or technical analysis—directly to the core model.</p>
+                </div>
+
+                <div id="aiChatConsoleDisplay" class="monochrome-card" style="flex: 1; padding: 20px; box-sizing: border-box; margin-bottom: 15px;">
+                </div>
+
+                <form id="aiEngineInteractionForm" style="display: flex; gap: 10px;">
+                    <input type="text" id="aiConsoleInputPrompt" class="monochrome-input" placeholder="Ask me anything (Medical diagnostics, logs, or general queries)..." style="flex: 1; padding: 14px; border-radius: 8px; font-size: 13px; outline: none;" autocomplete="off">
+                    <button type="submit" class="monochrome-btn" style="padding: 0 24px; border-radius: 8px; font-size: 13px;">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div style="flex: 0.8; display: flex; flex-direction: column; gap: 20px; height: 100%;">
+                
+                <div class="monochrome-card" style="padding: 25px; flex: 1; display: flex; flex-direction: column; justify-content: center;">
+                    <div style="margin-bottom: 15px;">
+                        <h4 id="uiReportTitle" style="color: #ffffff; font-size: 15px; font-weight: 600;"><i class="fa-solid fa-file-import"></i> Clinical Report & Log Ingestion Node</h4>
+                        <p id="uiReportDesc" style="font-size: 12px; color: #a1a1aa; margin-top: 4px;">Upload raw reports or system logs (.txt, .log) to dynamically extract parameters.</p>
+                    </div>
+
+                    <div id="fileDropZone" style="border: 2px dashed rgba(255, 255, 255, 0.15); border-radius: 8px; padding: 30px 20px; text-align: center; cursor: pointer; background: rgba(255,255,255,0.01); transition: all 0.3s ease;">
+                        <i class="fa-solid fa-cloud-arrow-up" style="font-size: 28px; color: #a1a1aa; margin-bottom: 10px;"></i>
+                        <p id="uiDropZoneText" style="font-size: 13px; font-weight: 500; color: #ffffff;">Drag & Drop File Here</p>
+                        <p id="uiDropZoneSub" style="font-size: 11px; color: #71717a; margin-top: 4px;">Supports raw medical text and operational logs</p>
+                        <input type="file" id="clinicalFileInput" style="display: none;" accept=".txt,.log">
+                    </div>
+                </div>
+
+                <div class="monochrome-card" style="padding: 25px;">
+                    <div style="margin-bottom: 15px;">
+                        <h4 id="uiDrugTitle" style="color: #ffffff; font-size: 15px; font-weight: 600;"><i class="fa-solid fa-capsules"></i> Pharmacological Interaction Checker</h4>
+                        <p id="uiDrugDesc" style="font-size: 12px; color: #a1a1aa; margin-top: 4px;">Evaluate potential drug-to-drug contraindications and export verified system logs.</p>
+                    </div>
+
+                    <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                        <input type="text" id="drugInputAlpha" class="monochrome-input" placeholder="First Active Compound" style="flex: 1; padding: 12px; border-radius: 6px; font-size: 13px; outline: none;">
+                        <input type="text" id="drugInputBeta" class="monochrome-input" placeholder="Second Active Compound" style="flex: 1; padding: 12px; border-radius: 6px; font-size: 13px; outline: none;">
+                    </div>
+                    
+                    <button id="triggerDrugMatrixCheckBtn" class="monochrome-btn" style="padding: 14px; font-size: 13px; width: 100%; border-radius: 6px;">
+                        Run Matrix Check
+                    </button>
+
+                    <div id="drugMatrixFeedbackDisplay" style="margin-top: 15px; padding: 12px; border-radius: 6px; font-size: 12px; display: none; line-height: 1.5; backdrop-filter: blur(5px);">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        
+        <div style="text-align: center; color: #71717a; font-size: 11px; margin-top: 15px; z-index: 10; font-family: 'Inter', sans-serif;">
+            CareShield Security Framework v4.2.0 (Crystalline Core Nodes Enabled) &copy; 2026.
+        </div>
+    </div>
+
+    <script src="js/ai-engine-script.js"></script>
+</body>
+</html>
