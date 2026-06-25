@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 // ==========================================================================
 
 // مفتاح الـ API الرسمي والمعتمد الخاص بك (تأكد من تحديثه)
-const CORE_MODEL_NAME = "gemini-3-flash-preview"; 
+const CORE_MODEL_NAME = "gemini-2.5-flash"; 
 
 let aiAgentClient;
 try {
