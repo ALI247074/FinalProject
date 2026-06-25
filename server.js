@@ -13,12 +13,15 @@ const PORT = process.env.PORT || 5000;
 // ==========================================================================
 
 // مفتاح الـ API الرسمي والمعتمد الخاص بك (تأكد من تحديثه)
-const NORTHHAWK_API_KEY = "AQ.Ab8RN6IalTZ5e9rNMEZo2dyRVnEL29Q3WANWQkyi83i9eU20ww";
-const CORE_MODEL_NAME = "gemini-3-flash-preview";
+const CORE_MODEL_NAME = "gemini-3-flash-preview"; 
 
 let aiAgentClient;
 try {
-    aiAgentClient = new GoogleGenAI({ apiKey: NORTHHAWK_API_KEY });
+    // 2. التوثيق الصارم: قراءة المفتاح من السحاب بأمان عبر process.env
+    // تأكد أنك سميت المتغير في لوحة تحكم Render باسم NORTHHAWK_KEY وضعت فيه مفتاحك الحقيقي المبتدئ بـ AIzaSy
+    aiAgentClient = new GoogleGenAI({ apiKey: process.env.NORTHHAWK_KEY });
+    
+    console.log("SUCCESS: Google AI Client initialized successfully.");
 } catch (err) {
     console.error("ERROR: Failed to initialize Google AI Client. Check API Key.", err.message);
 }
