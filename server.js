@@ -6,14 +6,14 @@ const { GoogleGenAI } = require('@google/genai');
 
 const app = express(); 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
 // ==========================================================================
 // 🛡️ CONFIGURATION & ADVANCED AI CORE ENVIRONMENT INITIALIZATION
 // ==========================================================================
 
 // مفتاح الـ API الرسمي والمعتمد الخاص بك (تأكد من تحديثه)
-const CORE_MODEL_NAME = "gemini-2.5-flash"; 
+const CORE_MODEL_NAME = "gemini-3-flash-preview"; 
 
 let aiAgentClient;
 try {
