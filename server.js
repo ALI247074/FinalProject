@@ -6,14 +6,14 @@ const { GoogleGenAI } = require('@google/genai');
 
 const app = express(); 
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = "0";
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 
 // ==========================================================================
 // 🛡️ CONFIGURATION & ADVANCED AI CORE ENVIRONMENT INITIALIZATION
 // ==========================================================================
 
 // مفتاح الـ API الرسمي والمعتمد الخاص بك (تأكد من تحديثه)
-const NORTHHAWK_API_KEY = process.env.NORTHHAWK_API_KEY;
+const NORTHHAWK_API_KEY = "AQ.Ab8RN6IalTZ5e9rNMEZo2dyRVnEL29Q3WANWQkyi83i9eU20ww";
 const CORE_MODEL_NAME = "gemini-3-flash-preview";
 
 let aiAgentClient;
