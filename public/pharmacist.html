@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="rootHtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareShield | Pharmacist Operations Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/pharmacist-style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar-glass">
+            <div class="sidebar-brand">
+                <div class="brand-logo-box">
+                    <i class="fa-solid fa-mortar-pestle"></i>
+                </div>
+                <div class="brand-text">
+                    <h2 data-i18n="brandTitle">Care<span class="silver-tint">Shield</span></h2>
+                    <span data-i18n="brandSubtitle">Secured Node Control</span>
+                </div>
+            </div>
+
+            <div class="session-profile-card">
+                <div class="profile-avatar">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="profile-info">
+                    <h4 id="sessionActiveUserName">Pharmacist Matrix</h4>
+                    <span class="role-tag" data-i18n="menuPharmacist">Pharmacist List</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link">
+                    <i class="fa-solid fa-chart-pie"></i> <span data-i18n="menuDashboard">Main Terminal</span>
+                </a>
+                <a href="pharmacist.html" class="sidebar-link active">
+                    <i class="fa-solid fa-pills"></i> <span data-i18n="menuPharmacist">Pharmacist List</span>
+                </a>
+            </nav>
+
+            <button class="terminate-session-btn" id="logoutActionTriggerBtn">
+                <i class="fa-solid fa-power-off"></i> <span data-i18n="terminateSessionBtn">Terminate Session</span>
+            </button>
+        </aside>
+
+        <main class="main-viewport-glass">
+
+            <header class="viewport-header">
+                <div class="header-identity-meta">
+                    <h1 data-i18n="pageTitle">Pharmaceutical Database Node</h1>
+                    <p data-i18n="pageDesc">Audit real-time drug inventories, record new medical compounds, and manage clinical drug storage matrices.</p>
+                </div>
+
+                <div class="header-action-cluster">
+                    <div class="engine-status-tag">
+                        <span data-i18n="dbStatusLabel">DB Status:</span>
+                        <strong class="status-online-glowing" data-i18n="dbStatusValue">Connected</strong>
+                    </div>
+
+                    <button class="control-action-btn" id="highContrastToggleSwitch" title="Toggle Accessibility Vision Contrast">
+                        <i class="fa-solid fa-circle-half-stroke"></i> <span data-i18n="contrastText">High Contrast</span>
+                    </button>
+
+                    <div class="language-mutation-bar">
+                        <button class="lang-node-btn" id="langSwitchArBtn">AR</button>
+                        <button class="lang-node-btn active" id="langSwitchEnBtn">EN</button>
+                    </div>
+                </div>
+            </header>
+
+            <section class="viewport-workspace-layer">
+
+                <div class="metrics-dashboard-row">
+                    <div class="analytical-glass-card">
+                        <div class="card-metric-icon cyan-glow"><i class="fa-solid fa-boxes-stacked"></i></div>
+                        <div class="card-metric-data">
+                            <span data-i18n="totalMedsLabel">Total Registered Drugs</span>
+                            <h3 id="totalMedsCountField">0</h3>
+                        </div>
+                    </div>
+                    <div class="analytical-glass-card">
+                        <div class="card-metric-icon red-glow"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                        <div class="card-metric-data">
+                            <span data-i18n="lowStockLabel">Low Stock Warning</span>
+                            <h3 id="lowStockCountField">0</h3>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="matrix-table-sectional-wrapper">
+                    <div class="table-sectional-header">
+                        <div>
+                            <h3 data-i18n="tableSectionTitle">Active Pharmaceutical Compound Matrix</h3>
+                            <p data-i18n="tableSectionDesc">Live auditing panel displaying database records for active medications, chemical families, and exact units.</p>
+                        </div>
+                        <button class="commit-config-action-btn" id="openProvisioningModalTrigger">
+                            <i class="fa-solid fa-plus-circle"></i> <span data-i18n="btnAddMed">Register New Drug</span>
+                        </button>
+                    </div>
+
+                    <div class="search-filter-container">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="drugDatabaseSearchField" placeholder="Search by drug name or compound category..." data-i18n-placeholder="searchPlaceholder">
+                    </div>
+
+                    <div class="table-scroll-matrix">
+                        <table class="premium-glass-table">
+                            <thead>
+                                <tr>
+                                    <th># ID</th>
+                                    <th data-i18n="thMedName">Medication Name</th>
+                                    <th data-i18n="thCategory">Chemical Category</th>
+                                    <th data-i18n="thStock">Available Stock</th>
+                                    <th data-i18n="thExpiry">Expiration Date</th>
+                                    <th data-i18n="thDesc">Description / Clinical Notes</th>
+                                    <th data-i18n="thActions">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pharmaceuticalCompoundsTableBodyNode">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+            </section>
+        </main>
+    </div>
+
+    <div class="modal-crystalline-backdrop-layer" id="provisionNewDrugModalShell">
+        <div class="modal-glass-card">
+            <div class="modal-card-header">
+                <div class="modal-card-branding">
+                    <i class="fa-solid fa-capsules text-cyan-glow"></i>
+                    <div>
+                        <h3 data-i18n="modalTitle">Register New Pharmaceutical Record</h3>
+                        <span data-i18n="modalSubtitle">Inject verified chemical compounds and inventory logs into core database</span>
+                    </div>
+                </div>
+                <button class="close-modal-trigger-btn" id="closeProvisioningModalTrigger">&times;</button>
+            </div>
+
+            <form id="provisionNewDrugSecureFormMatrix">
+                <div class="modal-form-scrollable-body">
+                    <div class="input-form-row">
+                        <label><i class="fa-solid fa-signature"></i> <span data-i18n="labelMedName">Medication Name</span></label>
+                        <input type="text" id="inputFieldFormMedName" class="premium-glass-input" required placeholder="e.g. Metformin 500mg">
+                    </div>
+                    <div class="input-form-row">
+                        <label><i class="fa-solid fa-tags"></i> <span data-i18n="labelCategory">Chemical Family / Category</span></label>
+                        <input type="text" id="inputFieldFormCategory" class="premium-glass-input" required placeholder="e.g. Antidiabetic / Biguanides">
+                    </div>
+                    <div class="input-form-row">
+                        <label><i class="fa-solid fa-warehouse"></i> <span data-i18n="labelStock">Initial Unit Stock</span></label>
+                        <input type="number" id="inputFieldFormStock" class="premium-glass-input" required min="0" placeholder="e.g. 250">
+                    </div>
+                    <div class="input-form-row">
+                        <label><i class="fa-solid fa-calendar-circle-exclamation"></i> <span data-i18n="labelExpiry">Expiration Date</span></label>
+                        <input type="date" id="inputFieldFormExpiry" class="premium-glass-input" required>
+                    </div>
+                    <div class="input-form-row">
+                        <label><i class="fa-solid fa-notes-medical"></i> <span data-i18n="labelDesc">Clinical Notes / Indications</span></label>
+                        <textarea id="inputFieldFormDesc" class="premium-glass-input text-area-extended" placeholder="Enter specific clinical restrictions or core usage logs..."></textarea>
+                    </div>
+                </div>
+
+                <div id="formExecutionStatusFeedback" class="modal-terminal-log"></div>
+
+                <div class="modal-action-footer">
+                    <button type="submit" class="commit-config-action-btn" data-i18n="btnSubmitForm">Commit Record To Server</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/pharmacist-script.js"></script>
+</body>
+
+</html>

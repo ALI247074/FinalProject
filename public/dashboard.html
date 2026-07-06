@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="rootHtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareShield | Operations Control Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/dashboard-style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar-glass">
+            <div class="sidebar-brand">
+                <div class="brand-logo-box">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="brand-text">
+                    <h2 data-i18n="brandTitle">Care<span class="silver-tint">Shield</span></h2>
+                    <span data-i18n="brandSubtitle">Secured Node Control</span>
+                </div>
+            </div>
+
+            <div class="session-profile-card">
+                <div class="profile-avatar">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="profile-info">
+                    <h3 id="sessionUserName">Fetching node identity...</h3>
+                    <span id="sessionUserRole">Clearance Profile: ---</span>
+                    <div class="badge-container">
+                        <span id="sessionClearanceLevel" class="clearance-badge">LVL-0</span>
+                    </div>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="accmanagments.html" id="menu-admin-accounts" class="nav-link"><i class="fa-solid fa-users-gear"></i> <span data-i18n="menuAdminAccounts">Managing employee accounts</span></a>
+
+                <a href="#" id="menu-admin-settings" class="nav-link">
+                    <i class="fa-solid fa-comments"></i>
+                    <span data-i18n="menuAdminSettings">FeedBack & Critical issues</span>
+                    <span id="feedbackBadge" class="notification-badge" style="display: none;">0</span>
+                </a>
+
+                <a href="#" id="menu-admin-logs" class="nav-link"><i class="fa-solid fa-clock-rotate-left"></i> <span data-i18n="menuAdminLogs">Complete System Monitoring Archive</span></a>
+                <!--Done-->
+                <a href="ai-engine.html" id="menu-admin-ai" class="nav-link"><i class="fa-solid fa-brain"></i> <span data-i18n="menuAdminAi">AI Engine</span></a>
+                <!--Done-->
+                <a href="public.html" id="menu-local" class="nav-link"><i class="fa-solid fa-chart-pie"></i> <span data-i18n="menuLocal">Public Insights Layer</span></a>
+                <a href="doctor.html" id="menu-doctor" class="nav-link"><i class="fa-solid fa-user-doctor"></i> <span data-i18n="menuDoctor">Doctor List</span></a>
+                <a href="pharmacist.html" id="menu-pharmacist" class="nav-link"><i class="fa-solid fa-pills"></i> <span data-i18n="menuPharmacist">Pharmacist List</span></a>
+                <!--Done-->
+
+                <!-- تم إعداد هذا الرابط ليؤدي مستقبلاً إلى الصفحة المخصصة التي ستقوم بتصميمها للمدقق -->
+                <a href="audit.html" id="menu-auditor" class="nav-link"><i class="fa-solid fa-clipboard-check"></i> <span data-i18n="menuAuditor">Auditor List</span></a>
+                <!--Done-->
+
+                <div class="role-nav-group" style="display: block; margin-top: 15px; border-top: 1px solid var(--border-crystalline); padding-top: 25px 5px;">
+                    <span class="nav-section-title" data-i18n="identityManagementTitle">Identity Management</span>
+                    <a href="#" id="triggerAccountConfigBtn" class="sidebar-link active-config-link">
+                        <i class="fa-solid fa-gears"></i> <span data-i18n="accountConfigBtn">Account Configuration</span>
+                        <!--Done-->
+                    </a>
+                </div>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="systemLogoutBtn" class="logout-action-trigger">
+                    <i class="fa-solid fa-power-off"></i> <span data-i18n="terminateSessionBtn">Terminate Session</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="viewport-core">
+            <header class="viewport-header">
+                <div class="header-titles">
+                    <h1 id="dynamicWorkspaceTitle" data-i18n="workspaceTitle">Real-Time Clinical Data Operations</h1>
+                    <p id="dynamicWorkspaceDesc" data-i18n="workspaceDesc">Role-Based Access Control (RBAC Enforcer Layer Matrix Active).</p>
+                </div>
+
+                <div class="header-controls-enclave">
+                    <button id="highContrastToggleBtn" class="control-action-btn" type="button">
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                        <span data-i18n="contrastText">High Contrast</span>
+                    </button>
+
+                    <button id="languageToggleBtn" class="control-action-btn" type="button">
+                        <i class="fa-solid fa-language"></i>
+                        <span id="displayLangLabel">AR</span>
+                    </button>
+
+                    <div class="engine-status-tag">
+                        <i class="fa-solid fa-microchip"></i>
+                        <span data-i18n="nodeStatusLabel">Node.js Core:</span>
+                        <span class="status-pulse-dot"></span>
+                        <span data-i18n="nodeStatusValue">Online</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="rooms-container" style="margin-top: 30px;">
+                <div id="room-admin" class="rbac-room-segment">
+                    <div class="room-banner-heading">
+                        <div class="room-banner-icon"><i class="fa-solid fa-terminal"></i></div>
+                        <h3 data-i18n="roomAdminTitle">Security Administrator Center</h3>
+                    </div>
+                    <div class="functional-cards-grid">
+                        <div class="crystalline-card">
+                            <h4 data-i18n="roomAdminHeading">Welcome Back, System Administrator</h4>
+                            <p class="card-brief-desc" data-i18n="roomAdminDesc">Utilize the administrative shell located on the left menu panel to initiate AI model inspections, provision access tokens, or audit system event trails logs.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="room-admin-logs-view" class="rbac-room-segment">
+                    <div class="room-banner-heading">
+                        <div class="room-banner-icon"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                        <h3><span data-i18n="menuAdminLogs">Complete System Monitoring Archive</span></h3>
+                    </div>
+                    <div class="crystalline-card" style="width: 100%; overflow-x: auto; min-height: 400px; display: block;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; border-bottom: 1px solid var(--border-crystalline); padding-bottom: 10px;">
+                            <h4 style="margin: 0; color: var(--primary-pure-white);">Live Stream Security Actions & Audit Trails</h4>
+                            <button id="clearLogsActionBtn" class="control-action-btn" style="border-color: rgba(255, 74, 74, 0.4); color: #ff4a4a;"><i class="fa-solid fa-trash-can"></i> Purge Logs Archive</button>
+                        </div>
+                        <table class="premium-glass-table" style="width: 100%; border-collapse: collapse; font-size: 13px;">
+                            <thead>
+                                <tr style="border-bottom: 1px solid var(--border-crystalline); text-align: left; color: var(--text-muted-gray);">
+                                    <th style="padding: 12px;">Timestamp</th>
+                                    <th style="padding: 12px;">Node Account</th>
+                                    <th style="padding: 12px;">Security Action Performed</th>
+                                    <th style="padding: 12px;">Role Clearance</th>
+                                    <th style="padding: 12px;">Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="liveLogsRegistryTable">
+                                <!-- Injected programmatically by JS -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div id="room-admin-feedback-view" class="rbac-room-segment">
+                    <div class="room-banner-heading">
+                        <div class="room-banner-icon"><i class="fa-solid fa-comments"></i></div>
+                        <h3><span data-i18n="menuAdminSettings">FeedBack & Critical issues</span></h3>
+                    </div>
+                    <div class="crystalline-card" style="width: 100%; display: flex; flex-direction: column; gap: 20px; min-height: 500px;">
+                        <div style="border-bottom: 1px solid var(--border-crystalline); padding-bottom: 10px;">
+                            <h4 style="margin: 0; color: var(--primary-pure-white);">Consultant Secure Cryptographic Communications Bridge</h4>
+                            <p class="card-brief-desc" style="margin-top: 4px;">Exclusive encrypted messaging channel for standard compliance issues and critical cases between the Clinical Consultant and the Administrative Core Root.</p>
+                        </div>
+                        <div id="complianceChatBoxEnclave" class="compliance-chat-container">
+                            <!-- Message node streams will print here -->
+                        </div>
+                        <div class="compliance-input-panel">
+                            <input type="text" id="complianceMessagePayloadInput" placeholder="Enter critical issue description or reply node directive..." style="flex: 1;">
+                            <button type="button" id="dispatchComplianceMessageBtn" class="commit-config-action-btn" style="margin-top: 0; padding: 0 24px;"><i class="fa-solid fa-paper-plane"></i> Send</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="room-consultant" class="rbac-room-segment">
+                    <div class="room-banner-heading">
+                        <div class="room-banner-icon"><i class="fa-solid fa-user-md"></i></div>
+                        <h3 data-i18n="roomConsultantTitle">Clinical Consultant Vault</h3>
+                    </div>
+                    <div class="functional-cards-grid">
+                        <div class="crystalline-card">
+                            <h4 data-i18n="roomConsultantHeading">Medical Governance Active</h4>
+                            <p class="card-brief-desc" data-i18n="roomConsultantDesc">Privileged workspace environment authorized for writing diagnostic reports, analyzing electronic health charts (EHR), and coordinating team decisions.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="room-doctor" class="rbac-room-segment">
+                    <div class="room-banner-heading">
+                        <div class="room-banner-icon"><i class="fa-solid fa-user-doctor"></i></div>
+                        <h3 data-i18n="roomDoctorTitle">Doctor Operations Bay</h3>
+                    </div>
+                    <div class="functional-cards-grid">
+                        <div class="crystalline-card">
+                            <h4 data-i18n="roomDoctorHeading">Patient Care Monitor</h4>
+                            <p class="card-brief-desc" data-i18n="roomDoctorDesc">Authorized telemetry operational panel for real-time validation of patient vitals logs, physiological changes tracking, and logging active treatment courses.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="room-pharmacist" class="rbac-room-segment">
+                    <div class="room-banner-heading">
+                        <div class="room-banner-icon"><i class="fa-solid fa-pills"></i></div>
+                        <h3 data-i18n="roomPharmacistTitle">Pharmacy Verification Terminal</h3>
+                    </div>
+                    <div class="functional-cards-grid">
+                        <div class="crystalline-card">
+                            <h4 data-i18n="roomPharmacistHeading">Secure Dispensary Matrix</h4>
+                            <p class="card-brief-desc" data-i18n="roomPharmacistDesc">Cryptographic validation center for scanning approved physician digital signatures, managing asset distribution loops, and evaluating formulation cross-conflicts.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="room-local" class="rbac-room-segment">
+                    <div class="room-banner-heading">
+                        <div class="room-banner-icon"><i class="fa-solid fa-eye"></i></div>
+                        <h3 data-i18n="roomLocalTitle">Public Insights & General Terminal</h3>
+                    </div>
+                    <div class="functional-cards-grid">
+                        <div class="crystalline-card">
+                            <h4 data-i18n="roomLocalHeading">General Information Node Active</h4>
+                            <p class="card-brief-desc" data-i18n="roomLocalDesc">Welcome to the restricted public tier of CareShield. Your current clearance level limits your operational view to non-PHI compliance metrics and baseline system infrastructure parameters.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <div id="accountConfigOverlay" class="modal-system-overlay">
+        <div class="modal-crystal-card">
+            <div class="modal-card-topbar">
+                <div class="modal-card-branding">
+                    <i class="fa-solid fa-sliders-h"></i>
+                    <div>
+                        <h3 data-i18n="modalConfigTitle">Account Configuration</h3>
+                        <span data-i18n="modalConfigSubtitle">Modify security parameters dynamically</span>
+                    </div>
+                </div>
+                <button id="closeConfigModalBtn" class="modal-dismiss-cross">&times;</button>
+            </div>
+
+            <form id="accountConfigSystemForm" class="modal-form-layout">
+                <div class="input-form-row">
+                    <label><i class="fa-solid fa-fingerprint"></i> <span data-i18n="labelFullName">Full Name (Read-Only Matrix)</span></label>
+                    <input type="text" id="configFieldFullName" readonly class="locked-crypto-input">
+                </div>
+                <div class="input-form-row">
+                    <label><i class="fa-solid fa-envelope"></i> <span data-i18n="labelEmail">Core Network Email Address</span></label>
+                    <input type="email" id="configFieldEmail" required placeholder="name@careshield.com">
+                </div>
+                <div class="input-form-row">
+                    <label><i class="fa-solid fa-key"></i> <span data-i18n="labelPassword">New Alpha-Numeric Secret Password</span></label>
+                    <input type="password" id="configFieldPassword" placeholder="Leave blank to maintain current hash integrity">
+                </div>
+                <div id="configFormStatusFeedback" class="modal-terminal-log"></div>
+                <div class="modal-action-footer">
+                    <button type="submit" class="commit-config-action-btn" data-i18n="btnCommitChanges">Commit Changes To Node</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="welcomeSystemOverlay" class="modal-system-overlay">
+        <div class="modal-crystal-card" style="text-align: center; max-width: 500px;">
+            <div class="modal-card-branding" style="justify-content: center; margin-bottom: 20px;">
+                <i class="fa-solid fa-circle-check" style="color: #00ff66; text-shadow: 0 0 15px rgba(0,255,102,0.4);"></i>
+                <div>
+                    <h3 id="welcomeHeaderTitle" style="font-size: 22px;">Authentication Successful</h3>
+                    <span data-i18n="welcomeSub">Secure Node Session Initialized</span>
+                </div>
+            </div>
+            <p id="welcomeModalDesc" style="font-size: 13.5px; color: var(--text-muted-gray); line-height: 1.6; margin-bottom: 30px;">
+                Initializing dynamic interface matrix...
+            </p>
+            <div style="display: flex; gap: 12px; justify-content: center;">
+                <button id="closeWelcomeModalBtn" class="commit-config-action-btn" style="margin-top: 0; flex: 1; padding: 12px;">
+                    <i class="fa-solid fa-bolt"></i> <span data-i18n="btnAccessDashboard">Access Dashboard</span>
+                </button>
+                <button id="welcomeLogoutBtn" class="logout-action-trigger" style="width: auto; padding: 0 20px; border-color: rgba(255, 74, 74, 0.3); color: #ff4a4a;">
+                    <i class="fa-solid fa-power-off"></i> <span data-i18n="btnExit">Exit</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/dashboard-script.js"></script>
+</body>
+
+</html>

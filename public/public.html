@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareShield | Public Portal & Universal Clinical Architecture</title>
+    <link rel="stylesheet" href="css/public-style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cairo:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <div class="container nav-container">
+
+            <div class="logo-group">
+                <div class="logo reveal-down">
+                    <div class="logo-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                    <span class="data-txt" data-en="CareShield Portal" data-ar="بوابة كيرشيلد العامة">CareShield Portal</span>
+                </div>
+
+                <div class="accessibility-bar">
+                    <button id="langToggle" class="access-btn"><i class="fa-solid fa-language"></i> <span class="btn-txt">Arabic</span></button>
+                    <button id="contrastToggle" class="access-btn"><i class="fa-solid fa-eye"></i> <span class="btn-txt">High Contrast</span></button>
+                </div>
+            </div>
+
+            <button class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <nav class="glass-menu">
+                <a href="#home" class="menu-link active data-txt" data-en="Core Hub" data-ar="الرئيسية الرقمية"><i class="fa-solid fa-border-all"></i> Core Hub</a>
+                <a href="#ai-sector" class="menu-link data-txt" data-en="NorthHawk AI Engine" data-ar="محرك NorthHawk AI"><i class="fa-solid fa-brain"></i> NorthHawk AI Engine version</a>
+                <a href="#management" class="menu-link data-txt" data-en="Hospital Modules" data-ar="وحدات المستشفى"><i class="fa-solid fa-bars-progress"></i> Hospital Modules</a>
+                <a href="#dev-team" class="menu-link data-txt" data-en="Architecture Team" data-ar="فريق الهندسة والتطوير"><i class="fa-solid fa-user-shield"></i> Architecture Team</a>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home" class="hero-section">
+        <div class="container hero-content">
+            <div class="badge-pill reveal">
+                <span class="dot pulse"></span> <span class="data-txt" data-en="CareShield Ecosystem V2 Active" data-ar="منظومة كيرشيلد الجيل الثاني نشطة">CareShield Ecosystem V2 Active</span>
+            </div>
+            <h1 class="reveal data-txt" style="transition-delay: 0.1s;" data-en="Engineering Secure Clinical Data and Hospital Infrastructure" data-ar="هندسة البيانات السريرية الآمنة والبنية التحتية المتكاملة للمستشفيات">Engineering Secure Clinical Data and Hospital Infrastructure</h1>
+
+            <p class="hero-subtitle reveal data-txt" data-en="An integrated healthcare platform fortified with multi-tenant role-based permissions (RBAC) and reinforced by continuous cryptographic audit logging." data-ar="منصة رعاية صحية متكاملة محصنة بصلاحيات الوصول المستندة إلى الأدوار (RBAC) ومدعومة بالتدقيق التشفيري المستمر للسجلات.">An integrated healthcare platform fortified with multi-tenant role-based permissions (RBAC) and reinforced by continuous cryptographic audit logging.</p>
+
+            <div class="hero-visuals">
+                <div class="visual-card left-card float-anim-1">
+                    <div class="card-row">
+                        <div class="icon-circle"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                        <div>
+                            <h4 class="data-txt" data-en="Audit Engine" data-ar="محرك تدقيق السجلات">Audit Engine</h4>
+                            <p class="data-txt" data-en="Cryptographic Access Logger" data-ar="مسجل الوصول التشفيري">Cryptographic Access Logger</p>
+                        </div>
+                    </div>
+                    <div class="plan-info">
+                        <span class="data-txt" data-en="Log Security" data-ar="أمان سجلات المعاملات">Log Security</span>
+                        <strong class="data-txt" data-en="Immutable Transaction Blocks" data-ar="كتل سجلات غير قابلة للتعديل">Immutable Transaction Blocks</strong>
+                        <span class="price data-txt" data-en="Live Auditing Active" data-ar="التدقيق الفوري نشط حالياً">Live Auditing Active</span>
+                    </div>
+                </div>
+
+                <div class="visual-card center-card float-anim-2">
+                    <div class="center-header">
+                        <div class="paypal-icon"><i class="fa-solid fa-server"></i></div>
+                        <span class="data-txt" data-en="Local Host Node" data-ar="عقدة الاستضافة المحلية">Local Host Node</span>
+                    </div>
+                    <h2 class="data-txt" data-en="Port 5000" data-ar="منفذ 5000">NODE-EHR-01</h2>
+                    <p class="label data-txt" data-en="NorthHawk AI Flask Instance" data-ar="مثيل نظام NorthHawk AI عبر Flask">Encrypted Patient Data Matrix</p>
+                    <div class="card-chip-visual">
+                        <div class="chip"></div>
+                        <i class="fa-solid fa-fingerprint"></i>
+                    </div>
+                </div>
+
+                <div class="visual-card right-card float-anim-3">
+                    <div class="user-welcome">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHBlcnNvbmF8ZW58MHx8MHx8fDA%3D" alt="Clinical User">
+                        <div>
+                            <p class="data-txt" data-en="Role Security Clearance" data-ar="التخليص الأمني للمستخدم">Role Security Clearance</p>
+                            <h4 class="data-txt" data-en="Verified Session" data-ar="جلسة مستخدم موثقة">Verified Session</h4>
+                        </div>
+                    </div>
+                    <div class="mini-balance">
+                        <p class="data-txt" data-en="Network Sync Uptime" data-ar="زمن مزامنة الشبكة">Network Sync Uptime</p>
+                        <h3 class="data-txt" data-en="99.99% Operational" data-ar="تشغيل مستمر بنسبة ٩٩.٩٩٪">99.99% Operational</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="bg-grid"></div>
+        <div class="bg-glow"></div>
+    </section>
+
+    <section id="ai-sector" class="content-section reveal">
+        <div class="container">
+            <div class="badge-pill small"><i class="fa-solid fa-brain"></i> <span class="data-txt" data-en="Local Intelligence Core" data-ar="نواة الذكاء الاصطناعي المحلي">Local Intelligence Core</span></div>
+            <h2 class="section-title data-txt" data-en="NorthHawk: Localized Security Standards & Verification" data-ar="نظام NorthHawk AI: نموذج التحقق ومعايير الأمان المحلية">NorthHawk AI: Localized Security Standards & Verification</h2>
+
+            <div class="ai-grid">
+                <div class="glass-card full-padding reveal-left">
+                    <div class="icon-circle"><i class="fa-solid fa-code-branch"></i></div>
+                    <h3 class="data-txt" data-en="Flask-Powered Security Model" data-ar="نموذج أمني مدعوم بـ Flask">Flask-Powered Security Model</h3>
+                    <p class="data-txt" data-en="A dedicated local AI framework hosting structured knowledge bases to cross-reference system interactions against international and local information security reference standards." data-ar="إطار عمل ذكاء اصطناعي محلي يستضيف قواعد معرفية لمطابقة تفاعلات النظام مع مراجع معايير أمن المعلومات العالمية والمحلية بدقة.">A dedicated local AI framework hosting structured knowledge bases to cross-reference system interactions against international and local information security reference standards.</p>
+                </div>
+                <div class="glass-card full-padding reveal-right">
+                    <div class="icon-circle"><i class="fa-solid fa-shield"></i></div>
+                    <h3 class="data-txt" data-en="Clinical Telemetry Integrity" data-ar="سلامة القياسات السريرية">Clinical Telemetry Integrity</h3>
+                    <p class="data-txt" data-en="Automated evaluation loops that parse system behavior inputs locally, ensuring that patient record flows strictly correspond to configured safety baselines." data-ar="حلقات تقييم تلقائية تحلل مدخلات سلوك النظام محلياً، وتضمن أن تدفقات سجلات المرضى تتطابق تماماً مع خطوط الأمان الأساسية المهيأة للعمل.">Automated evaluation loops that parse system behavior inputs locally, ensuring that patient record flows strictly correspond to configured safety baselines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="management" class="content-section dark-bg">
+        <div class="container">
+            <div class="badge-pill small"><i class="fa-solid fa-sliders"></i> <span class="data-txt" data-en="Integrated System Modules" data-ar="وحدات النظام المتكاملة">Integrated System Modules</span></div>
+            <h2 class="section-title data-txt" data-en="Comprehensive Hospital Platform Management" data-ar="إدارة شاملة لخدمات ومرافق المستشفى الرقمية">Comprehensive Hospital Platform Management</h2>
+
+            <div class="management-grid">
+                <div class="glass-card reveal-zoom">
+                    <div class="card-header-icon"><i class="fa-solid fa-hospital-user"></i></div>
+                    <h3 class="data-txt" data-en="Secure Patient Portal" data-ar="بوابة المرضى الآمنة">Secure Patient Portal</h3>
+                    <p class="data-txt" data-en="A clean public interface providing verified users access to medical profiles, appointments, and telemetry diagnostics without exposing underlying core frameworks." data-ar="واجهة عامة أنيقة تتيح للمستخدمين الموثقين الوصول إلى المخططات الطبية والمواعيد والتحاليل دون كشف أطر النظام الحساسة.">A clean public interface providing verified users access to medical profiles, appointments, and telemetry diagnostics without exposing underlying core frameworks.</p>
+                </div>
+                <div class="glass-card reveal-zoom" style="transition-delay: 0.1s;">
+                    <div class="card-header-icon"><i class="fa-solid fa-user-lock"></i></div>
+                    <h3 class="data-txt" data-en="Role-Based Authorization" data-ar="بوابة الصلاحيات والأدوار">Role-Based Authorization</h3>
+                    <p class="data-txt" data-en="Complete architectural control separating duties across the hospital ecosystem: granular clearance boundaries for Doctors, Nurses, and System Administrators." data-ar="تحكم بنيوي كامل يفصل المسؤوليات عبر بيئة المستشفى: حدود تصريح دقيقة وصارمة للأطباء، طاقم التمريض، وإداريي النظام.">Complete architectural control separating duties across the hospital ecosystem: granular clearance boundaries for Doctors, Nurses, and System Administrators.</p>
+                </div>
+                <div class="glass-card reveal-zoom" style="transition-delay: 0.2s;">
+                    <div class="card-header-icon"><i class="fa-solid fa-database"></i></div>
+                    <h3 class="data-txt" data-en="Secure Login Gateway" data-ar="بوابة تسجيل الدخول الآمنة">Secure Login Gateway</h3>
+                    <p class="data-txt" data-en="Centralized gateway processing credential inputs through cryptographic validation loops, fully protected against unauthorized enumeration attempts." data-ar="بوابة مركزية تعالج مدخلات الاعتماد عبر حلقات توثيق تشفيرية متطورة، محمية بالكامل ضد محاولات الاختراق أو الوصول غير المصرح به.">Centralized gateway processing credential inputs through cryptographic validation loops, fully protected against unauthorized enumeration attempts.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="container">
+            <div class="badge-pill small"><i class="fa-solid fa-shield-halved"></i> <span class="data-txt" data-en="Defensive Security Infrastructure" data-ar="البنية الأمنية الدفاعية للمشروع">Defensive Security Infrastructure</span></div>
+            <h2 class="section-title data-txt" data-en="Enforced Infrastructure Isolation & Encryption Frameworks" data-ar="عزل البنية التحتية المفروض وأطر التشفير المتكاملة">Enforced Infrastructure Isolation & Encryption Frameworks</h2>
+
+            <div class="tabs-control reveal">
+                <button class="tab-btn active data-txt" data-en="RBAC Permission Model" data-ar="منطق صلاحيات الوصول (RBAC)">RBAC Permission Model</button>
+                <button class="tab-btn data-txt" data-en="Audit Logging Engine" data-ar="محرك تدقيق السجلات المشفرة">Audit Logging Engine</button>
+                <button class="tab-btn data-txt" data-en="Cryptographic Integrity verification" data-ar="التحقق من السلامة التشفيرية">Cryptographic Integrity verification</button>
+            </div>
+
+            <div class="feature-display-card reveal-zoom">
+                <div class="feature-content-box">
+                    <div class="icon-box-lg"><i class="fa-solid fa-file-shield"></i></div>
+                    <h3 class="data-txt" data-en="Granular Role-Based Access Control" data-ar="تحكم دقيق بالوصول مستند إلى الأدوار">Granular Role-Based Access Control</h3>
+                    <p class="data-txt" data-en="Enforces immutable privilege boundaries across Electronic Health Records (EHR). Every request transaction automatically validates active session permissions, preventing unauthorized access to core diagnostic charts." data-ar="يفرض حدود صلاحيات غير قابلة للتعديل عبر السجلات الصحية الإلكترونية المحمية للمستشفى. تتحقق كل عملية فحص تلقائياً من أذونات الجلسة النشطة، مما يمنع تسريب البيانات الحيوية الحساسة.">Enforces immutable privilege boundaries across Electronic Health Records (EHR). Every request transaction automatically validates active session permissions, preventing unauthorized access to core diagnostic charts.</p>
+                    <div class="stats-pill">
+                        <i class="fa-solid fa-square-check"></i> <span class="data-txt" data-en="EHR Multi-Permission Matrix Verified & Compliant" data-ar="مصفوفة الصلاحيات المتعددة للسجلات موثقة ومتوافقة تماماً">EHR Multi-Permission Matrix Verified & Compliant</span>
+                    </div>
+                </div>
+                <div class="card-stack stack-1"></div>
+                <div class="card-stack stack-2"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="dev-team" class="content-section">
+        <div class="container">
+            <div class="badge-pill small"><i class="fa-solid fa-user-shield"></i> <span class="data-txt" data-en="Development & Supervisory Board" data-ar="الهيئة المطورة والمشرفة على النظام">Development & Supervisory Board</span></div>
+            <h2 class="section-title data-txt" data-en="Project Architecture Team" data-ar="هندسة وهيكلة مشروع تخرج كيرشيلد">Project Architecture Team</h2>
+
+            <div class="Admin-card reveal" style="transition-delay: 0.1s;">
+                <div class="doc-img-wrapper">
+                    <img src="https://i.pinimg.com/webp/736x/69/63/38/696338d2558605391c6f0290c70aeed0.webp" alt="Ali Abdullah">
+                </div>
+                <h3 class="data-txt" data-en="Ali Abdullah" data-ar="علي عبد الله">Ali Abdullah</h3>
+                <p class="doc-spec data-txt" data-en="Lead Developer & Security Architect" data-ar="المطور الرئيسي ومهندس النظام الأمني">Lead Developer & Security Architect</p>
+                <span class="doc-meta data-txt" data-en="Front-End Specialist & InfoSec Student" data-ar="طالب في امن المعلومات وادارة المخاطر والامتثال">InfoSec Student & Risk Management and Compliance</span>
+            </div>
+
+
+        </div>
+    </section>
+
+
+
+
+
+    <script src="js/public-script.js"></script>
+</body>
+
+</html>

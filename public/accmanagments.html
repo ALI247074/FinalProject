@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="rootHtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareShield | User Accounts Management</title>
+    <!-- الأيقونات والخطوط الفخمة المعتمدة للمشروع -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/accmanagments-style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <!-- Sidebar Terminal Container -->
+        <aside class="sidebar-glass">
+            <div class="sidebar-brand">
+                <div class="brand-logo-box">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="brand-text">
+                    <h2 data-i18n="brandTitle">Care<span class="silver-tint">Shield</span></h2>
+                    <span data-i18n="brandSubtitle">Secured Node Control</span>
+                </div>
+            </div>
+
+            <!-- Monochromatic Profile Session Identification Block -->
+            <div class="session-profile-card">
+                <div class="profile-avatar">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="profile-info">
+                    <h3 id="sessionUserName">Loading Identity...</h3>
+                    <span id="sessionUserRole">Clearance Profile: ---</span>
+                    <div class="badge-container">
+                        <span id="sessionClearanceLevel" class="clearance-badge">LVL-0</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dynamic Navigation Matrix -->
+            <nav class="sidebar-nav">
+                <a href="dashboard.html" class="sidebar-link"><i class="fa-solid fa-chart-line"></i> <span data-i18n="menuDashboard">Main Terminal</span></a>
+                <a href="#" class="sidebar-link active"><i class="fa-solid fa-users-gear"></i> <span data-i18n="menuAdminAccounts">Managing employee accounts</span></a>
+                <a href="ai-engine.html" class="sidebar-link"><i class="fa-solid fa-brain"></i> <span data-i18n="menuAdminAi">AI Engine</span></a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="systemLogoutBtn" class="logout-action-trigger">
+                    <i class="fa-solid fa-power-off"></i> <span data-i18n="terminateSessionBtn">Terminate Session</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Workspace Core Viewport -->
+        <main class="viewport-core">
+
+            <!-- Dynamic Crystal Blurred Topbar Header Component -->
+            <header class="viewport-header">
+                <div class="header-titles">
+                    <h1 data-i18n="pageTitle">Identity & Access Control Center</h1>
+                    <p data-i18n="pageDesc">Establish cryptographic records, assign administrative roles, and enforce system wide account blocks.</p>
+                </div>
+
+                <div class="header-controls-enclave">
+                    <!-- High Contrast Trigger -->
+                    <button id="highContrastToggleBtn" class="control-action-btn" type="button">
+                        <i class="fa-solid fa-circle-half-stroke"></i>
+                        <span data-i18n="contrastText">High Contrast</span>
+                    </button>
+
+                    <!-- Language Selection Matrix -->
+                    <button id="languageToggleBtn" class="control-action-btn" type="button">
+                        <i class="fa-solid fa-language"></i>
+                        <span id="displayLangLabel">العربية</span>
+                    </button>
+
+                    <!-- Core Hardware Communication Pipeline -->
+                    <div class="engine-status-tag">
+                        <i class="fa-solid fa-database"></i>
+                        <span data-i18n="dbStatusLabel">DB Status:</span>
+                        <span class="status-pulse-dot"></span>
+                        <span data-i18n="dbStatusValue">Connected</span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- 📊 LUXURY CRYSTALLINE USER DATA CONTAINER SHEET -->
+            <div class="crystalline-card table-wrapper-card">
+                <div class="table-header-action-row">
+                    <div>
+                        <h3 data-i18n="tableSectionTitle">Active Institutional Credentials Matrix</h3>
+                        <p class="card-brief-desc" data-i18n="tableSectionDesc">Live auditing panel displaying database records for security roles, clearance tiers, and access state.</p>
+                    </div>
+                    <button id="triggerAddUserModalBtn" class="commit-config-action-btn">
+                        <i class="fa-solid fa-user-plus"></i> <span data-i18n="btnAddUser">Provision New Account</span>
+                    </button>
+                </div>
+
+                <!-- Sleek Translucent Table Component Container -->
+                <div class="responsive-table-scroll">
+                    <table class="premium-glass-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="thName">Full Name</th>
+                                <th data-i18n="thEmail">Email Address</th>
+                                <th data-i18n="thRole">Assigned Role</th>
+                                <th data-i18n="thClearance">Clearance Tier</th>
+                                <th data-i18n="thStatus">Session Status</th>
+                                <th style="text-align: center;" data-i18n="thActions">Enforcement Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="liveUsersTablePayload">
+                            <!-- Injected dynamically via Javascript Async Protocol -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 🌟 THE CRYSTALLINE NEW USER PROVISIONING OVERLAY MODAL -->
+    <div id="addUserModalOverlay" class="modal-system-overlay">
+        <div class="modal-crystal-card">
+            <div class="modal-card-topbar">
+                <div class="modal-card-branding">
+                    <i class="fa-solid fa-user-shield"></i>
+                    <div>
+                        <h3 data-i18n="modalTitle">Provision New Account Identity</h3>
+                        <span data-i18n="modalSubtitle">Inject verified personnel credentials into core database</span>
+                    </div>
+                </div>
+                <button id="closeUserModalBtn" class="modal-dismiss-cross">&times;</button>
+            </div>
+
+            <form id="provisionNewUserForm" class="modal-form-layout">
+                <div class="input-form-row">
+                    <label><i class="fa-solid fa-signature"></i> <span data-i18n="labelName">Full Name</span></label>
+                    <input type="text" id="inputFieldFormName" required placeholder="Your Name">
+                </div>
+                <div class="input-form-row">
+                    <label><i class="fa-solid fa-envelope"></i> <span data-i18n="labelEmail">Secure Corporate Email</span></label>
+                    <input type="email" id="inputFieldFormEmail" required placeholder="username@careshield.com">
+                </div>
+                <div class="input-form-row">
+                    <label><i class="fa-solid fa-key"></i> <span data-i18n="labelPassword">Initial Secret Password Hash</span></label>
+                    <input type="password" id="inputFieldFormPassword" required placeholder="••••••••">
+                </div>
+
+                <div class="input-form-grid-split">
+                    <div class="input-form-row">
+                        <label><i class="fa-solid fa-id-card-clip"></i> <span data-i18n="labelRole">System Role</span></label>
+                        <select id="selectFieldFormRole" class="premium-glass-dropdown">
+                            <option value="Consultant">Consultant</option>
+                            <option value="Doctor">Doctor</option>
+                            <option value="Local">Local</option>
+                            <option value="Pharmacist">Pharmacist</option>
+                            <option value="Auditor">Auditor</option>
+                            <option value="Admin">Admin Workspace</option>
+                        </select>
+                    </div>
+                    <div class="input-form-row">
+                        <label><i class="fa-solid fa-unlock-keyhole"></i> <span data-i18n="labelClearance">Clearance Level</span></label>
+                        <select id="selectFieldFormClearance" class="premium-glass-dropdown">
+                            <option value="LVL-1">LVL-1 (General Access)</option>
+                            <option value="LVL-2">LVL-2 (Main)</option>
+                            <option value="LVL-3 ">LVL-3 (Auditor)</option>
+                            <option value="LVL-4">LVL-4 (Critical)</option>
+                            <option value="TOP-SECRET">TOP-SECRET (Root)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div id="formExecutionStatusFeedback" class="modal-terminal-log"></div>
+
+                <div class="modal-action-footer">
+                    <button type="submit" class="commit-config-action-btn" data-i18n="btnSubmitForm">Commit Identity To Server</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Script Connector Core Execution -->
+    <script src="js/accmanagments-script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="rootHtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareShield | Compliance & Security Audit Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/audit-style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar-glass">
+            <div class="sidebar-brand">
+                <div class="brand-logo-box">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <div class="brand-text">
+                    <h2 data-i18n="brandTitle">Care<span class="silver-tint">Shield</span></h2>
+                    <span data-i18n="brandSubtitle">Secured Node Control</span>
+                </div>
+            </div>
+
+            <div class="session-profile-card">
+                <div class="profile-avatar">
+                    <i class="fa-solid fa-user-shield"></i>
+                </div>
+                <div class="profile-info">
+                    <h4 id="sessionUserFullName">Lead Auditor Node</h4>
+                    <span id="sessionUserRoleBadge" class="engine-status-tag">Security Compliance Auditor</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-links-wrapper">
+                <a href="dashboard.html" class="sidebar-link">
+                    <i class="fa-solid fa-terminal"></i> <span data-i18n="menuDashboard">Main Terminal</span>
+                </a>
+                <a href="auditor.html" class="sidebar-link active">
+                    <i class="fa-solid fa-clipboard-check"></i> <span data-i18n="menuAuditor">Auditor List & Compliance</span>
+                </a>
+                <button id="toggleLanguagePipelineBtn" class="control-action-btn">
+                    <i class="fa-solid fa-language"></i> <span data-i18n="btnLanguageToggle">Switch Language</span>
+                </button>
+                <button id="toggleHighContrastPipelineBtn" class="control-action-btn">
+                    <i class="fa-solid fa-circle-half-stroke"></i> <span data-i18n="contrastText">High Contrast</span>
+                </button>
+            </nav>
+
+            <div class="sidebar-footer-action">
+                <button class="terminate-session-trigger" id="terminateAuditSessionBtn">
+                    <i class="fa-solid fa-power-off"></i> <span data-i18n="terminateSessionBtn">Terminate Session</span>
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-workspace">
+            <header class="workspace-header">
+                <div class="header-title-block">
+                    <h1 data-i18n="pageTitle">Medical Framework Compliance Matrix</h1>
+                    <p data-i18n="pageDesc">Live cryptographic auditing ledger tracking institutional adherence to global healthcare security frameworks (HIPAA, GDPR, ISO 27001).</p>
+                </div>
+                <div class="database-status-node">
+                    <span data-i18n="dbStatusLabel">Audit Engine:</span>
+                    <span class="status-pulse-value"><i class="fa-solid fa-circle-check"></i> Active Monitoring</span>
+                </div>
+            </header>
+
+            <section class="analytical-glass-grid">
+                <div class="analytical-glass-card PlatformComplianceScore">
+                    <div class="card-metric-icon score-icon"><i class="fa-solid fa-gavel"></i></div>
+                    <div class="card-metric-data">
+                        <span class="metric-label" data-i18n="complianceScoreLabel">Global Compliance SLogging & Auditing Node (A.8.12)</span>
+                        <h2 class="metric-value">98.4%</h2>
+                    </div>
+                </div>
+                <div class="analytical-glass-card EncryptedNodes">
+                    <div class="card-metric-icon lock-icon"><i class="fa-solid fa-key"></i></div>
+                    <div class="card-metric-data">
+                        <span class="metric-label" data-i18n="cryptographicStateLabel">Cryptographic Alignment</span>
+                        <h2 class="metric-value" data-i18n="cryptoEnforcedValue">Fully Enforced</h2>
+                    </div>
+                </div>
+                <div class="analytical-glass-card AuditedControls">
+                    <div class="card-metric-icon integrity-icon"><i class="fa-solid fa-list-check"></i></div>
+                    <div class="card-metric-data">
+                        <span class="metric-label" data-i18n="auditedControlsLabel">Verified Controls</span>
+                        <h2 class="metric-value">34 / 35</h2>
+                    </div>
+                </div>
+            </section>
+
+            <section class="matrix-table-sectional-wrapper">
+                <div class="table-header-narrative">
+                    <h3 data-i18n="tableSectionTitle">Active Healthcare Security Standards Alignment Matrix</h3>
+                    <p data-i18n="tableSectionDesc">Live auditing panel displaying control status, regulatory domains, and continuous automated telemetry validation logs.</p>
+                </div>
+
+                <div class="table-responsive-shell">
+                    <table class="premium-glass-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="thControlId">Control Identifier</th>
+                                <th data-i18n="thFramework">Security Standard</th>
+                                <th data-i18n="thDomain">Regulatory Domain</th>
+                                <th data-i18n="thTargetNode">Target Module</th>
+                                <th data-i18n="thStatus">Compliance State</th>
+                                <th data-i18n="thActions">Telemetry Verification</th>
+                            </tr>
+                        </thead>
+                        <tbody id="complianceAuditMatrixTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="telemetryInspectionModalShell" class="modal-glass-shell" style="display: none;">
+        <div class="modal-glass-card">
+            <div class="modal-card-branding">
+                <i class="fa-solid fa-microchip-ai dynamic-scanning-pulse"></i>
+                <div>
+                    <h3 id="modalTerminalHeaderTitle">Real-Time Telemetry Integrity Audit</h3>
+                    <span id="modalTerminalHeaderSubtitle">Inspecting secure cryptographic ledger nodes...</span>
+                </div>
+            </div>
+
+            <div id="modalTerminalLogDisplayFeed" class="modal-terminal-log">
+            </div>
+
+            <div class="modal-action-footer">
+                <button type="button" id="closeTelemetryInspectionModalBtn" class="commit-config-action-btn" style="display: none;" data-i18n="btnCloseModal">Acknowledge Ledger Integrity</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/audit-script.js"></script>
+</body>
+
+</html>

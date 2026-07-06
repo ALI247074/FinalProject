@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" id="rootHtml">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CareShield | Clinical Consultant Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/doctor-style.css">
+</head>
+
+<body>
+
+    <div class="dashboard-container">
+
+        <aside class="sidebar-glass">
+            <div class="sidebar-brand">
+                <div class="brand-logo-box">
+                    <i class="fa-solid fa-user-doctor"></i>
+                </div>
+                <div class="brand-text">
+                    <h2 data-i18n="brandTitle">Care<span class="silver-tint">Shield</span></h2>
+                    <span data-i18n="brandSubtitle">Secured Node Control</span>
+                </div>
+            </div>
+
+            <nav class="sidebar-nav-matrix">
+                <a href="dashboard.html" class="sidebar-link">
+                    <i class="fa-solid fa-chart-line"></i> <span data-i18n="menuDashboard">Main Terminal</span>
+                </a>
+                <a href="doctor.html" class="sidebar-link active">
+                    <i class="fa-solid fa-bed-pulse"></i> <span data-i18n="menuPatients">Patients Matrix</span>
+                </a>
+            </nav>
+
+            <div class="sidebar-footer-utils">
+                <button onclick="toggleLanguagePipeline()" class="util-control-btn">
+                    <i class="fa-solid fa-language"></i> <span id="langTextBtn">العربية</span>
+                </button>
+                <button onclick="toggleHighContrastVisualLayer()" class="util-control-btn">
+                    <i class="fa-solid fa-circle-half-stroke"></i> <span data-i18n="contrastText">High Contrast</span>
+                </button>
+            </div>
+        </aside>
+
+
+
+
+        <main class="main-workspace-shell">
+
+            <header class="header-glass-panel">
+                <div class="header-meta-identity">
+                    <h1 data-i18n="pageTitle">Clinical Governance & Patient Telemetry</h1>
+                    <p data-i18n="pageDesc">Live monitoring of hospital wards, room allocation matrix, and custom clinical directive injection.</p>
+                </div>
+                <div class="db-connectivity-badge">
+                    <span data-i18n="dbStatusLabel">DB Status:</span>
+                    <strong class="status-online"><i class="fa-solid fa-circle-check"></i> <span data-i18n="dbStatusValue">Connected</span></strong>
+                </div>
+            </header>
+
+            <section class="analytical-stats-grid">
+                <div class="analytical-glass-card">
+                    <div class="card-icon-box cyan-glow"><i class="fa-solid fa-hospital-user"></i></div>
+                    <div class="card-data-flow">
+                        <span data-i18n="totalPatientsLabel">Total Active Patients</span>
+                        <h3 id="statTotalPatients">0</h3>
+                    </div>
+                </div>
+                <div class="analytical-glass-card">
+                    <div class="card-icon-box green-glow"><i class="fa-solid fa-door-closed"></i></div>
+                    <div class="card-data-flow">
+                        <span data-i18n="activeRoomsLabel">Occupied Rooms</span>
+                        <h3 id="statOccupiedRooms">0</h3>
+                    </div>
+                </div>
+                <div class="analytical-glass-card">
+                    <div class="card-icon-box red-glow"><i class="fa-solid fa-heart-pulse"></i></div>
+                    <div class="card-data-flow">
+                        <span data-i18n="criticalCasesLabel">Critical Attention Required</span>
+                        <h3 id="statCriticalCases">0</h3>
+                    </div>
+                </div>
+            </section>
+
+            <section class="control-actions-pipeline">
+                <div class="search-filter-composite">
+                    <div class="search-input-wrapper">
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        <input type="text" id="patientSearchNode" data-i18n-placeholder="searchPlaceholder" placeholder="Filter records by patient name or room number..." oninput="triggerDynamicClientFilter()">
+                    </div>
+                    <select id="statusFilterDropdown" class="premium-glass-dropdown" onchange="triggerDynamicClientFilter()">
+                        <option value="ALL" data-i18n="optAll">All Status Matrices</option>
+                        <option value="Stable" data-i18n="optStable">Stable</option>
+                        <option value="Critical" data-i18n="optCritical">Critical</option>
+                        <option value="Under Observation" data-i18n="optObservation">Under Observation</option>
+                        <option value="Discharge Pending" data-i18n="optDischarge">Discharge Pending</option>
+                    </select>
+                </div>
+
+                <div class="action-buttons-group">
+                    <button onclick="executeBulkPatientIngestion()" class="commit-config-action-btn bulk-inject-btn">
+                        <i class="fa-solid fa-database"></i> <span data-i18n="btnBulkInject">Inject 100 Patients Snapshot</span>
+                    </button>
+                    <button onclick="openProvisionNewPatientModal()" class="commit-config-action-btn">
+                        <i class="fa-solid fa-user-plus"></i> <span data-i18n="btnAddPatient">Register New Patient</span>
+                    </button>
+                </div>
+            </section>
+
+            <section class="matrix-table-sectional-wrapper">
+                <div class="table-sectional-header">
+                    <h2 data-i18n="tableSectionTitle">Patient Ward Location Grid</h2>
+                    <p data-i18n="tableSectionDesc">Cryptographic live view of patient rooms configuration, diagnostic records, and treatment status logs.</p>
+                </div>
+                <div class="responsive-table-scroll-container">
+                    <table class="premium-glass-table">
+                        <thead>
+                            <tr>
+                                <th data-i18n="thRoom">Room</th>
+                                <th data-i18n="thName">Full Name</th>
+                                <th data-i18n="thAgeGender">Age / Gender</th>
+                                <th data-i18n="thDiagnosis">Active Clinical Diagnosis</th>
+                                <th data-i18n="thStatus">Status Triage</th>
+                                <th data-i18n="thActions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="patientCoreTableBody">
+                            <tr>
+                                <td colspan="6" style="text-align: center; padding: 40px; color: var(--text-muted-gray);">
+                                    <i class="fa-solid fa-spinner fa-spin"></i> Initializing core live network pipeline snapshot...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="provisionPatientModalShell" class="modal-blur-overlay">
+        <div class="modal-glass-card">
+            <div class="modal-card-branding">
+                <i class="fa-solid fa-circle-user"></i>
+                <div>
+                    <h3 data-i18n="modalTitle">Register New Institutional Patient</h3>
+                    <span data-i18n="modalSubtitle">Inject verified clinical telemetry and records into core database</span>
+                </div>
+                <button type="button" class="close-modal-trigger-cross" onclick="closeProvisionNewPatientModal()">&times;</button>
+            </div>
+
+            <form id="provisionNewPatientSecureForm" onsubmit="commitPatientFormPipeline(event)">
+                <div class="modal-interactive-body">
+                    <div class="input-form-row">
+                        <label><i class="fa-solid fa-signature"></i> <span data-i18n="labelName">Full Name</span></label>
+                        <input type="text" id="inputFieldFormName" class="premium-glass-input" required placeholder="e.g. Dr. Ali Abdullah">
+                    </div>
+
+                    <div class="input-form-two-column-grid">
+                        <div class="input-form-row">
+                            <label><i class="fa-solid fa-venus-mars"></i> <span data-i18n="labelAgeGender">Age & Gender</span></label>
+                            <input type="text" id="inputFieldFormAgeGender" class="premium-glass-input" required placeholder="e.g. 24 / Male">
+                        </div>
+                        <div class="input-form-row">
+                            <label><i class="fa-solid fa-door-open"></i> <span data-i18n="labelRoom">Room Number</span></label>
+                            <input type="text" id="inputFieldFormRoom" class="premium-glass-input" required placeholder="e.g. Room 302-B">
+                        </div>
+                    </div>
+
+                    <div class="input-form-row">
+                        <label><i class="fa-solid fa-stethoscope"></i> <span data-i18n="labelDiagnosis">Active Clinical Diagnosis</span></label>
+                        <input type="text" id="inputFieldFormDiagnosis" class="premium-glass-input" required placeholder="e.g. Acute Respiratory Distress Syndrome">
+                    </div>
+
+                    <div class="input-form-row">
+                        <label><i class="fa-solid fa-heart-pulse"></i> <span data-i18n="labelStatusMutation">Enforce Status Triage</span></label>
+                        <select id="selectFieldFormStatus" class="premium-glass-dropdown" required>
+                            <option value="Stable">Stable</option>
+                            <option value="Critical">Critical</option>
+                            <option value="Under Observation">Under Observation</option>
+                            <option value="Discharge Pending">Discharge Pending</option>
+                        </select>
+                    </div>
+
+                    <div class="input-form-row">
+                        <label><i class="fa-solid fa-notes-medical"></i> <span data-i18n="labelClinicalNotes">Consultant Directives & Notes</span></label>
+                        <textarea id="textareaFieldFormNotes" class="premium-glass-input text-area-extended" required placeholder="Inject detailed clinical observations, medical risks, or custom constraints..."></textarea>
+                    </div>
+                </div>
+
+                <div id="formExecutionStatusFeedback" class="modal-terminal-log"></div>
+
+                <div class="modal-action-footer">
+                    <button type="submit" class="commit-config-action-btn" data-i18n="btnSubmitForm">Commit Directives to Server</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/doctor-script.js"></script>
+</body>
+
+</html>

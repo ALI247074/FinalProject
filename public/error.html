@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ERROR 403</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+         :root {
+            --bg-black: #020204;
+            --text-pure: #ffffff;
+            --text-muted: #a1a1aa;
+            --error-glow-1: rgba(239, 68, 68, 0.08);
+            --error-glow-2: rgba(147, 51, 234, 0.06);
+            --glass-bg: rgba(255, 255, 255, 0.02);
+            --glass-border: rgba(255, 255, 255, 0.07);
+            --glass-blur: blur(30px) saturate(130%);
+            --glass-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: radial-gradient(circle at 20% 30%, var(--error-glow-1) 0%, transparent 40%), radial-gradient(circle at 80% 70%, var(--error-glow-2) 0%, transparent 45%), linear-gradient(180deg, #06060a 0%, #020204 100%);
+            background-size: cover;
+            color: var(--text-pure);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.003) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.003) 1px, transparent 1px);
+            background-size: 50px 50px;
+            z-index: 1;
+            pointer-events: none;
+        }
+        
+        .error-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            padding: 50px 40px;
+            border-radius: 32px;
+            box-shadow: var(--glass-shadow);
+            max-width: 540px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            z-index: 5;
+            animation: cardAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        
+        @keyframes cardAppear {
+            0% {
+                opacity: 0;
+                transform: scale(0.95) translateY(20px);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) translateY(0);
+            }
+        }
+        
+        .icon-wrapper {
+            width: 80px;
+            height: 80px;
+            background: rgba(239, 68, 68, 0.05);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2.2rem;
+            color: #ef4444;
+            text-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+            animation: floatIcon 4s ease-in-out infinite;
+        }
+        
+        @keyframes floatIcon {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+        
+        .error-code {
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #f87171;
+            margin-bottom: 8px;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            background: linear-gradient(135deg, #ffffff 40%, #fca5a5 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .sarcastic-msg {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+        
+        .btn-return {
+            background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(147, 51, 234, 0.1));
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #fca5a5;
+            padding: 12px 28px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        
+        .btn-return:hover {
+            background: var(--text-pure);
+            color: var(--bg-black);
+            border-color: var(--text-pure);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(239, 68, 68, 0.15);
+        }
+        
+        .btn-return i {
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+        
+        .btn-return:hover i {
+            transform: translateX(-4px);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="bg-grid"></div>
+
+    <div class="error-card">
+
+        <div class="icon-wrapper">
+            <i class="fa-solid fa-user-secret"></i>
+        </div>
+
+        <div class="error-code">Error 403: Forbidden</div>
+
+
+        <h1>Cute Try, URL Voyager </h1>
+
+
+        <p class="sarcastic-msg">
+            Did you honestly think altering the address bar would grant you access into the forbidden matrix? Adorable. Your grand infiltration ends right here. Step away from the console before the system loses its humor.
+        </p>
+
+
+        <button class="btn-return" onclick="goBackOrExit()">
+            <i class="fa-solid fa-arrow-left"></i> I am sorry , Take Me Back please
+        </button>
+    </div>
+
+    <script>
+        function goBackOrExit() {
+            if (document.referrer !== "") {
+                window.history.back();
+            } else {
+                window.location.href = "index.html";
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,967 @@
+/* Monochromatic High-End Glassmorphism Core */
+
+:root {
+    --primary-pure-white: #ffffff;
+    --silver-tint: #cbd5e1;
+    --text-core-light: #f4f4f5;
+    --text-muted-gray: #a1a1aa;
+    --border-crystalline: rgba(255, 255, 255, 0.09);
+    --sidebar-glass-bg: rgba(10, 10, 12, 0.45);
+    --header-glass-bg: rgba(10, 10, 12, 0.40);
+    --card-glass-bg: rgba(255, 255, 255, 0.03);
+    --core-blur-radius: blur(25px) saturate(210%);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', 'Cairo', sans-serif;
+}
+
+body {
+    background: url('image/microsoft-surface-3840x2160-26736.jpg') no-repeat center center fixed;
+    background-size: cover;
+    color: var(--text-core-light);
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.dashboard-container {
+    display: flex;
+    height: 100vh;
+    max-height: 100vh;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+    background-color: rgba(9, 9, 11, 0.5);
+}
+
+
+/* تم تعديل العرض ليصبح متناسقاً وأنيقاً مثل واجهة المدقق */
+
+.sidebar-glass {
+    width: 580px;
+    background: var(--sidebar-glass-bg);
+    backdrop-filter: var(--core-blur-radius);
+    -webkit-backdrop-filter: var(--core-blur-radius);
+    border-right: 1px solid var(--border-crystalline);
+    display: flex;
+    flex-direction: column;
+    padding: 30px 22px;
+    position: relative;
+    top: 0;
+    height: 100vh;
+    max-height: 100vh;
+    z-index: 100;
+}
+
+.sidebar-brand {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 25px;
+}
+
+
+/* تحويل الشعار إلى صندوق زجاجي داكن مثل واجهة المدقق */
+
+.brand-logo-box {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--primary-pure-white);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    flex-shrink: 0;
+}
+
+
+/* تبسيط وتجميل بطاقة الملف الشخصي */
+
+.session-profile-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-crystalline);
+    border-radius: 16px;
+    padding: 14px 16px;
+    margin: 10px 0 25px 0;
+    backdrop-filter: var(--core-blur-radius);
+    width: 100%;
+}
+
+.profile-avatar {
+    width: 42px;
+    height: 42px;
+    background: rgba(6, 182, 212, 0.1);
+    /* تأثير الإضاءة السماوية للمدقق */
+    border: 1px solid rgba(6, 182, 212, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    color: #06b6d4;
+    flex-shrink: 0;
+}
+
+.profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+    min-width: 0;
+}
+
+#sessionUserName {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--primary-pure-white);
+    letter-spacing: -0.3px;
+}
+
+#sessionUserRole {
+    font-size: 11.5px;
+    color: var(--text-muted-gray);
+}
+
+
+/* إخفاء الشارة الضخمة للحفاظ على بساطة الواجهة (أو يمكنك تركها إن كانت إلزامية وظيفياً) */
+
+.badge-container {
+    display: none;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar-nav::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 10px;
+}
+
+.sidebar-nav::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+
+/* العناوين الجانبية بنفس ستايل ( > Main Terminal ) */
+
+.nav-section-title {
+    font-size: 12.5px;
+    color: var(--silver-tint);
+    margin: 15px 0 10px 4px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.nav-section-title::before {
+    content: '>';
+    font-family: monospace;
+    font-size: 14px;
+    color: var(--text-muted-gray);
+}
+
+
+/* تحويل الروابط إلى أزرار زجاجية (Glass Buttons) */
+
+.nav-link {
+    display: none;
+    /* تدار عبر الجافاسكربت */
+}
+
+.nav-link,
+.sidebar-link {
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    color: var(--text-core-light);
+    text-decoration: none;
+    border-radius: 12px;
+    font-size: 13.5px;
+    font-weight: 500;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    position: relative;
+    line-height: 1.4;
+}
+
+.nav-link i,
+.sidebar-link i {
+    flex-shrink: 0;
+    width: 18px;
+    text-align: center;
+}
+
+.nav-link:hover,
+.sidebar-link:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.15);
+    color: var(--primary-pure-white);
+    transform: translateX(4px);
+}
+
+
+/* تمييز الزر النشط بإطار واضح وتوهج داخلي */
+
+.nav-link.active,
+.sidebar-link.active,
+.active-config-link {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    color: var(--primary-pure-white) !important;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.role-nav-group {
+    display: none;
+}
+
+.sidebar-footer {
+    height: auto;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    width: 100%;
+}
+
+
+/* تعديل زر تسجيل الخروج ليكون أرق وأكثر احترافية */
+
+.logout-action-trigger,
+.terminate-session-btn {
+    background: rgba(239, 68, 68, 0.05);
+    border: 1px solid rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+    width: 100%;
+}
+
+.logout-action-trigger:hover,
+.terminate-session-btn:hover {
+    background: rgba(239, 68, 68, 0.15);
+    border-color: #ef4444;
+    color: #ff7070;
+    transform: translateY(-2px);
+}
+
+
+/* ========================================================= */
+
+
+/* المكونات الداخلية للواجهة (تبقى كما هي لضمان عدم المساس بالمدير) */
+
+
+/* ========================================================= */
+
+.viewport-core {
+    flex-grow: 1;
+    padding: 40px;
+    overflow-y: auto;
+    height: 100vh;
+    max-height: 100vh;
+}
+
+.viewport-core::-webkit-scrollbar {
+    width: 6px;
+}
+
+.viewport-core::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.viewport-core::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+}
+
+.viewport-core::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.viewport-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--header-glass-bg);
+    backdrop-filter: var(--core-blur-radius);
+    -webkit-backdrop-filter: var(--core-blur-radius);
+    border: 1px solid var(--border-crystalline);
+    padding: 24px;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.header-titles h1 {
+    font-size: 24px;
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+.header-titles p {
+    color: var(--text-muted-gray);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+.header-controls-enclave {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.control-action-btn {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-crystalline);
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-core-light);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    outline: none;
+    user-select: none;
+}
+
+.control-action-btn:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+}
+
+.control-action-btn:active {
+    transform: scale(0.97);
+}
+
+.engine-status-tag {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-crystalline);
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-family: monospace;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.status-pulse-dot {
+    width: 8px;
+    height: 8px;
+    background: #00ff66;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #00ff66;
+}
+
+.rbac-room-segment {
+    display: none;
+    background: rgba(10, 10, 12, 0.3);
+    border: 1px solid var(--border-crystalline);
+    border-radius: 24px;
+    padding: 35px;
+    backdrop-filter: blur(10px);
+}
+
+.room-banner-heading {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.room-banner-icon {
+    width: 48px;
+    height: 48px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-crystalline);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+}
+
+.functional-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.crystalline-card {
+    background: var(--card-glass-bg);
+    border: 1px solid var(--border-crystalline);
+    padding: 24px;
+    border-radius: 16px;
+    min-height: 160px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card-brief-desc {
+    font-size: 13px;
+    color: var(--text-muted-gray);
+    line-height: 1.5;
+}
+
+.premium-glass-table th,
+.premium-glass-table td {
+    padding: 14px;
+    border-bottom: 1px solid var(--border-crystalline);
+    color: var(--text-core-light);
+}
+
+.premium-glass-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.compliance-chat-container {
+    flex-grow: 1;
+    overflow-y: auto;
+    background: rgba(0, 0, 0, 0.25);
+    border: 1px solid var(--border-crystalline);
+    border-radius: 16px;
+    padding: 20px;
+    max-height: 350px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.compliance-chat-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.compliance-chat-container::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+}
+
+.chat-bubble-node {
+    padding: 12px 16px;
+    border-radius: 16px;
+    max-width: 80%;
+    font-size: 13px;
+    line-height: 1.5;
+    position: relative;
+    word-break: break-word;
+}
+
+.chat-bubble-node.admin-bubble {
+    background: rgba(255, 255, 255, 0.06);
+    align-self: flex-end;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.chat-bubble-node.consultant-bubble {
+    background: rgba(0, 102, 255, 0.08);
+    align-self: flex-start;
+    border: 1px solid rgba(0, 102, 255, 0.2);
+}
+
+.chat-bubble-node .msg-signature {
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--silver-tint);
+    margin-bottom: 4px;
+    display: block;
+}
+
+.chat-bubble-node .msg-timestamp {
+    font-size: 9px;
+    color: var(--text-muted-gray);
+    display: block;
+    margin-top: 6px;
+    text-align: right;
+}
+
+.chat-bubble-node .msg-erase-trigger {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: transparent;
+    border: none;
+    color: #ff4a4a;
+    cursor: pointer;
+    font-size: 11px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.chat-bubble-node:hover .msg-erase-trigger {
+    opacity: 1;
+}
+
+.compliance-input-panel {
+    display: flex;
+    gap: 12px;
+}
+
+.compliance-input-panel input {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 14px 16px;
+    border-radius: 12px;
+    color: var(--text-core-light);
+    font-size: 13px;
+    outline: none;
+}
+
+.compliance-input-panel input:focus {
+    border-color: rgba(255, 255, 255, 0.3);
+}
+
+.modal-system-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(4, 4, 6, 0.75);
+    backdrop-filter: blur(25px) saturate(180%);
+    -webkit-backdrop-filter: blur(25px) saturate(180%);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    transition: all 0.3s ease;
+}
+
+.modal-crystal-card {
+    background: rgba(15, 15, 20, 0.55);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 30px 70px rgba(0, 0, 0, 0.75), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    width: 480px;
+    border-radius: 24px;
+    padding: 35px;
+    backdrop-filter: blur(35px) saturate(220%);
+    -webkit-backdrop-filter: blur(35px) saturate(220%);
+    animation: modalSlideUpReveal 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalSlideUpReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px) scale(0.96);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.modal-card-topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    padding-bottom: 15px;
+}
+
+.modal-card-branding {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.modal-card-branding i {
+    font-size: 20px;
+    color: var(--primary-pure-white);
+    background: rgba(255, 255, 255, 0.05);
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.modal-card-branding h3 {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary-pure-white);
+}
+
+.modal-card-branding span {
+    font-size: 11px;
+    color: var(--text-muted-gray);
+    display: block;
+    margin-top: 2px;
+}
+
+.modal-dismiss-cross {
+    background: transparent;
+    border: none;
+    color: var(--text-muted-gray);
+    font-size: 28px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.modal-dismiss-cross:hover {
+    color: #ff4a4a;
+}
+
+.modal-form-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-form-row {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-form-row label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--silver-tint);
+}
+
+.input-form-row input {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 14px 16px;
+    border-radius: 12px;
+    color: var(--text-core-light);
+    font-size: 13px;
+    outline: none;
+    transition: all 0.25s ease;
+}
+
+.input-form-row input:focus {
+    border-color: rgba(255, 255, 255, 0.4);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.input-form-row .locked-crypto-input {
+    background: rgba(255, 255, 255, 0.01) !important;
+    border-color: rgba(255, 255, 255, 0.04) !important;
+    color: var(--text-muted-gray);
+}
+
+.modal-terminal-log {
+    font-size: 12px;
+    font-family: monospace;
+    padding: 10px;
+    border-radius: 8px;
+    display: none;
+    text-align: center;
+}
+
+.modal-terminal-log.success {
+    background: rgba(0, 255, 102, 0.08);
+    border: 1px solid rgba(0, 255, 102, 0.2);
+    color: #00ff66;
+    display: block;
+}
+
+.modal-terminal-log.error {
+    background: rgba(255, 74, 74, 0.08);
+    border: 1px solid rgba(255, 74, 74, 0.2);
+    color: #ff4a4a;
+    display: block;
+}
+
+.commit-config-action-btn {
+    background: var(--primary-pure-white);
+    color: #09090b;
+    border: none;
+    padding: 14px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
+}
+
+.commit-config-action-btn:hover {
+    transform: translateY(-2px);
+    background: #f4f4f5;
+}
+
+
+/* ==========================================================================
+   🔄 RTL DIRECTION ENHANCEMENTS FOR ARABIC MODE
+   ========================================================================== */
+
+html[dir="rtl"] {
+    font-family: 'Cairo', 'Inter', sans-serif;
+}
+
+html[dir="rtl"] .sidebar-glass {
+    border-right: none;
+    border-left: 1px solid var(--border-crystalline);
+}
+
+html[dir="rtl"] .sidebar-link:hover,
+html[dir="rtl"] .nav-link:hover {
+    transform: translateX(-4px);
+}
+
+html[dir="rtl"] .badge-container {
+    margin-left: 0;
+    margin-right: -58px;
+}
+
+
+/* 🔔 شارة التنبيه الحمراء الكريستالية فوق أيقونة قائمة الفيدباك */
+
+.notification-badge {
+    position: absolute;
+    top: 2px;
+    right: 12px;
+    background: rgba(239, 68, 68, 0.95);
+    backdrop-filter: blur(4px);
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    min-width: 18px;
+    height: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    animation: pulse 2s infinite;
+    z-index: 10;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7);
+    }
+    70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 8px rgba(239, 68, 68, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+
+/* ==========================================================================
+   👁️ HIGH CONTRAST ACCESSIBILITY OVERRIDE MATRIX
+   ========================================================================== */
+
+.high-contrast-mode {
+    background: #000000 !important;
+    background-image: none !important;
+    color: #ffff00 !important;
+}
+
+.high-contrast-mode * {
+    background-image: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+}
+
+.high-contrast-mode body,
+.high-contrast-mode .dashboard-container,
+.high-contrast-mode .sidebar-glass,
+.high-contrast-mode .viewport-core,
+.high-contrast-mode .viewport-header,
+.high-contrast-mode .rbac-room-segment,
+.high-contrast-mode .crystalline-card,
+.high-contrast-mode .modal-crystal-card,
+.high-contrast-mode .session-profile-card,
+.high-contrast-mode .profile-avatar,
+.high-contrast-mode .engine-status-tag,
+.high-contrast-mode .control-action-btn {
+    background-color: #000000 !important;
+    color: #ffff00 !important;
+    border: 2px solid #ffff00 !important;
+}
+
+.high-contrast-mode .nav-link,
+.high-contrast-mode .sidebar-link {
+    color: #ffff00 !important;
+    border: 1px solid transparent !important;
+}
+
+.high-contrast-mode .nav-link:hover,
+.high-contrast-mode .sidebar-link:hover,
+.high-contrast-mode .sidebar-link.active,
+.high-contrast-mode .active-config-link {
+    background-color: #ffff00 !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+    font-weight: bold !important;
+}
+
+.high-contrast-mode input {
+    background-color: #000000 !important;
+    color: #ffff00 !important;
+    border: 2px solid #ffff00 !important;
+}
+
+.high-contrast-mode input:focus {
+    border-color: #ffffff !important;
+}
+
+.high-contrast-mode .commit-config-action-btn,
+.high-contrast-mode .brand-logo-box {
+    background-color: #ffff00 !important;
+    color: #000000 !important;
+    border: 2px solid #000000 !important;
+    font-weight: bold !important;
+}
+
+.high-contrast-mode .status-pulse-dot {
+    background-color: #ffff00 !important;
+    border: 1px solid #000000 !important;
+}
+
+.high-contrast-mode .modal-system-overlay {
+    background-color: rgba(0, 0, 0, 0.95) !important;
+}
+
+@media (max-width: 992px) {
+    body {
+        height: auto;
+        max-height: none;
+        overflow-y: auto;
+    }
+    .dashboard-container {
+        flex-direction: column;
+        height: auto;
+        max-height: none;
+        overflow-y: auto;
+    }
+    .sidebar-glass {
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        border-right: none !important;
+        border-left: none !important;
+        border-bottom: 1px solid var(--border-crystalline);
+        /* نقل الحد الفاصل ليصبح أفقياً */
+        padding: 24px 16px;
+    }
+    .sidebar-nav {
+        overflow-y: visible;
+        gap: 10px;
+        padding-right: 0;
+    }
+    .viewport-core {
+        width: 100%;
+        height: auto;
+        max-height: none;
+        overflow-y: visible;
+        padding: 24px 16px;
+    }
+    .viewport-header {
+        padding: 16px;
+        border-radius: 16px;
+        gap: 12px;
+    }
+    .header-titles h1 {
+        font-size: 20px;
+    }
+    .header-controls-enclave {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+    .control-action-btn,
+    .engine-status-tag {
+        flex-grow: 1;
+        font-size: 11px;
+        padding: 8px 14px;
+    }
+    .functional-cards-grid {
+        grid-template-columns: 1fr !important;
+        gap: 16px;
+    }
+    .crystalline-card {
+        min-height: auto;
+        gap: 16px;
+    }
+    .rbac-room-segment {
+        padding: 20px 16px;
+        border-radius: 16px;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+    .premium-glass-table {
+        width: 100%;
+        min-width: 500px;
+    }
+    .modal-crystal-card {
+        width: 100% !important;
+        max-width: calc(100% - 32px) !important;
+        padding: 24px 16px !important;
+        border-radius: 16px;
+    }
+    .modal-card-topbar {
+        margin-bottom: 20px;
+    }
+    .modal-card-branding h3 {
+        font-size: 16px;
+    }
+    .compliance-chat-container {
+        max-height: 280px;
+    }
+    .chat-bubble-node {
+        max-width: 90%;
+    }
+}
