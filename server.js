@@ -37,7 +37,7 @@ If the requested language is Arabic ('ar'), you MUST write the entire response i
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'home.html')));
 
 
 // DATABASE NODE INITIALIZATION (SQLITE3)
