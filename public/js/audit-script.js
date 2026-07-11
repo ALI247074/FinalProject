@@ -79,7 +79,7 @@ const dictionary = {
         thTargetNode: 'البرمجية المستهدفة',
         thStatus: 'حالة الامتثال',
         thActions: 'التحقق من القياس عن بعد',
-        btnInspect: 'فحص الت telemetry للعقدة',
+        btnInspect: 'التحقق من عقدة القياس عن بعد',
         btnCloseModal: 'اعتماد سلامة دفتر الحسابات',
         badgeCompliant: 'ممتثل تماماً',
         badgeReview: 'قيد المراجعة والتدقيق'
