@@ -114,7 +114,7 @@ const dictionary = {
 
 // 📦 مصفوفة الـ 100 مريض الكاملة والواقعية طبياً
 const bulkPatientsDataset = [
-    { name: "Ali kunaifani", ageGender: "24 / Male", room: "Room 101-A", diagnosis: "Information Security Exhaustion Syndrome", status: "Under Observation", notes: "Patient requests premium crystalline high-contrast visual filters." },
+    { name: "Ali kunaifani", ageGender: "24 / Male", room: "Room 101-A", diagnosis: "Exhaustion Syndrome", status: "Under Observation", notes: "Patient requests premium crystalline high-contrast visual filters." },
     { name: "Ahmad Al-Saeed", ageGender: "45 / Male", room: "Room 101-B", diagnosis: "Acute Myocardial Infarction", status: "Critical", notes: "Continuous ECG tracking active. Administering Beta-blockers." },
     { name: "Fatima Al-Hassan", ageGender: "32 / Female", room: "Room 102", diagnosis: "Type 1 Diabetes Ketoacidosis", status: "Stable", notes: "Insulin pipeline calibrated on responsive regular intervals." },
     { name: "Mohammad Anwar", ageGender: "51 / Male", room: "Room 103-A", diagnosis: "Severe Bacterial Pneumonia", status: "Under Observation", notes: "Oxygen flow targeted at 4L/min. Checking leukocyte matrix." },
