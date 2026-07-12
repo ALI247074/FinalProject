@@ -86,7 +86,7 @@ const dictionary = {
     }
 };
 
-// 🛡️ CORE COMPLIANCE DATABASE MOCK DATA MAPPED TO MEDICAL REQS
+
 const complianceControlsDataset = [
     { id: "CS-HIPAA-01", framework: "HIPAA Security Rule", domain: "Access Control & Identity Matrix", module: "Authentication Layer", status: "Compliant" },
     { id: "CS-HIPAA-02", framework: "HIPAA Security Rule", domain: "Data at Rest Encryption", module: "SQLite DB Crypt Node", status: "Compliant" },
@@ -95,14 +95,14 @@ const complianceControlsDataset = [
     { id: "CS-ISO27001-31", framework: "ISO 27001:2022", domain: "Logging & Auditing Node (A.8.12)", module: "Sentinel Tactical Core", status: "Compliant" }
 ];
 
-// 🚀 INITIALIZATION INTERFACE ENGINE Pipeline
+
 document.addEventListener("DOMContentLoaded", () => {
     initializeLanguageEnvironmentState();
     executeFetchAuditPipeline();
     attachInteractiveEventConnectors();
 });
 
-// 🌐 LANGUAGE MANAGEMENT ENVIRONMENT CORE
+
 function initializeLanguageEnvironmentState() {
     let currentLang = localStorage.getItem("dashboardLang") || "en";
     localStorage.setItem("dashboardLang", currentLang);
@@ -113,7 +113,7 @@ function executeLocalizationInterfaceRender(lang) {
     const rootHtml = document.getElementById("rootHtml");
     if (!rootHtml) return;
 
-    // Toggle DOM directions
+   
     if (lang === "ar") {
         rootHtml.setAttribute("dir", "rtl");
         rootHtml.setAttribute("lang", "ar");
@@ -122,12 +122,12 @@ function executeLocalizationInterfaceRender(lang) {
         rootHtml.setAttribute("lang", "en");
     }
 
-    // Direct text replacement pipeline via data-i18n attributes
+    
     const elementsToTranslate = document.querySelectorAll("[data-i18n]");
     elementsToTranslate.forEach(element => {
         const key = element.getAttribute("data-i18n");
         if (dictionary[lang] && dictionary[lang][key]) {
-            // Check for inner HTML formatting tags
+            
             if (key === "brandTitle") {
                 element.innerHTML = dictionary[lang][key];
             } else {
@@ -137,18 +137,18 @@ function executeLocalizationInterfaceRender(lang) {
     });
 }
 
-// 📊 COMPLIANCE TABLE PIPELINE RENDERING ENGINE
+
 function executeFetchAuditPipeline() {
     const tableBody = document.getElementById("complianceAuditMatrixTableBody");
     if (!tableBody) return;
 
     const currentLang = localStorage.getItem("dashboardLang") || "en";
-    tableBody.innerHTML = ""; // Clear active viewport buffer
+    tableBody.innerHTML = ""; 
 
     complianceControlsDataset.forEach(control => {
         const tr = document.createElement("tr");
 
-        // Define status tags custom classes dynamically
+      
         const statusClass = control.status === "Compliant" ? "tag-compliant" : "tag-review";
         const statusText = control.status === "Compliant" ? dictionary[currentLang].badgeCompliant : dictionary[currentLang].badgeReview;
         const statusIcon = control.status === "Compliant" ? "fa-shield-check" : "fa-arrows-spin fa-spin";
@@ -173,7 +173,7 @@ function executeFetchAuditPipeline() {
     });
 }
 
-// 🛰️ SIMULATED REAL-TIME TELEMETRY INTEGRITY INSPECTION PIPELINE
+
 function triggerImmediateTelemetryFancifulAudit(controlId, nodeModuleName) {
     const modal = document.getElementById("telemetryInspectionModalShell");
     const logDisplay = document.getElementById("modalTerminalLogDisplayFeed");
@@ -181,14 +181,14 @@ function triggerImmediateTelemetryFancifulAudit(controlId, nodeModuleName) {
 
     if (!modal || !logDisplay || !closeBtn) return;
 
-    // Show shell layout
+    
     modal.style.display = "flex";
     closeBtn.style.display = "none";
-    logDisplay.innerHTML = ""; // Purge logs terminal console
+    logDisplay.innerHTML = ""; 
 
     const activeLanguage = localStorage.getItem("dashboardLang") || "en";
 
-    // Setup tactical logging narrative lines matrix
+    
     const terminalLogsNarrative = [
         `[SYSTEM INITIALIZATION] Establishing secure handshake alignment channel with local target node: ${nodeModuleName}`,
         `[CRYPTOGRAPHIC INTEGRITY] Querying core cryptographic reference block hashes for target record ID: ${controlId}`,
@@ -199,31 +199,31 @@ function triggerImmediateTelemetryFancifulAudit(controlId, nodeModuleName) {
 
     let logCounterIndex = 0;
 
-    // Interval stream simulation timeline loop
+    
     const logTickerInterval = setInterval(() => {
         if (logCounterIndex < terminalLogsNarrative.length) {
             const logLineParagraph = document.createElement("p");
             logLineParagraph.classList.add("terminal-line-node");
 
-            // Format dynamic contextual highlights tags inside simulation logs
+            
             if (logCounterIndex === 0) logLineParagraph.className = "terminal-line-node";
             if (logCounterIndex === 2) logLineParagraph.className = "terminal-line-warning";
             if (logCounterIndex === 4) logLineParagraph.className = "terminal-line-success";
 
             logLineParagraph.innerHTML = `&gt; ${terminalLogsNarrative[logCounterIndex]}`;
             logDisplay.appendChild(logLineParagraph);
-            logDisplay.scrollTop = logDisplay.scrollHeight; // Auto anchor tracking scroll
+            logDisplay.scrollTop = logDisplay.scrollHeight; 
             logCounterIndex++;
         } else {
             clearInterval(logTickerInterval);
-            closeBtn.style.display = "block"; // Unlock confirmation control button
+            closeBtn.style.display = "block"; 
         }
     }, 650);
 }
 
-// ⚙️ INTERACTIVE EVENTS CONNECTORS HUB
+
 function attachInteractiveEventConnectors() {
-    // Language Pipeline Toggle trigger
+    
     const languageBtn = document.getElementById("toggleLanguagePipelineBtn");
     if (languageBtn) {
         languageBtn.addEventListener("click", () => {
@@ -235,7 +235,7 @@ function attachInteractiveEventConnectors() {
         });
     }
 
-    // High Contrast Enforcement Pipeline Trigger
+    
     const highContrastBtn = document.getElementById("toggleHighContrastPipelineBtn");
     if (highContrastBtn) {
         highContrastBtn.addEventListener("click", () => {
@@ -243,7 +243,7 @@ function attachInteractiveEventConnectors() {
         });
     }
 
-    // Close Modal Trigger Connector
+    
     const closeModalBtn = document.getElementById("closeTelemetryInspectionModalBtn");
     if (closeModalBtn) {
         closeModalBtn.addEventListener("click", () => {
@@ -251,7 +251,7 @@ function attachInteractiveEventConnectors() {
         });
     }
 
-    // Terminate Session Event Confirmation Pipeline Trigger
+    
     const terminateBtn = document.getElementById("terminateAuditSessionBtn");
     if (terminateBtn) {
         terminateBtn.addEventListener("click", () => {
