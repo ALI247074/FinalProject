@@ -1,4 +1,32 @@
-// 🌐 DICTIONARY LOCATIONS MATRIX (ARABIC / ENGLISH)
+(function enforceImmediateAccessControl() {
+
+    const currentSession = sessionStorage.getItem("currentUser");
+
+
+    if (!currentSession) {
+
+        window.location.replace("error.html");
+        return;
+    }
+
+    try {
+
+        const account = JSON.parse(currentSession);
+
+        const validRoles = ["pharmacist"];
+
+        if (!account || !account.role || !validRoles.includes(account.role.trim().toLowerCase())) {
+            window.location.replace("error.html");
+            return;
+        }
+    } catch (e) {
+        // في حال وجود تلاعب بالبيانات النصية للجلسة 
+        sessionStorage.clear();
+        window.location.replace("error.html");
+        return;
+    }
+})();
+
 const dictionary = {
     en: {
         brandTitle: 'Care<span class="silver-tint">Shield</span>',
